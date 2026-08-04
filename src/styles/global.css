@@ -2,6 +2,11 @@
   --ink: #1a1a1a;
   --bg: #fff;
 
+  /* Zero on desktop, so the page measure is untouched there. On a phone it
+     becomes the margin between the content and the screen edges, and --mm
+     subtracts it when fitting the widest work to the viewport. */
+  --gutter: 0px;
+
   /* --column is set on <body> from src/lib/scale.ts; --mm and --box-h on the
      works wrapper in index.astro. The box reads --column directly, so the
      header and the boxes cannot drift out of alignment. */
@@ -28,8 +33,9 @@ a {
 }
 
 .column {
-  width: var(--column);
+  width: min(100%, var(--column));
   margin: 0 auto;
+  padding-inline: var(--gutter);
 }
 
 /* --- header ------------------------------------------------------------- */
@@ -65,7 +71,7 @@ a {
 
 .box {
   position: relative;
-  width: var(--column);
+  width: 100%;
   height: var(--box-h);
 }
 
@@ -167,11 +173,33 @@ figcaption {
 
 .about img {
   display: block;
-  width: 400px;
+  width: min(100%, 400px);
   height: auto;
   margin-top: 2.5rem;
 }
 
 .contact {
   margin-bottom: 0;
+}
+
+/* --- phones -------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  body {
+    padding-top: 2rem;
+  }
+
+  /* The arrows hang outside the box on desktop; there is no room for that on a
+     phone, so they sit just inside its edges instead. */
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
 }

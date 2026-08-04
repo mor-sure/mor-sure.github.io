@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
-import { scaleFor, checkAspect } from '../lib/scale';
+import { scaleFor, scaleVars, checkAspect } from '../lib/scale';
 
 const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
   (a, b) => a.data.order - b.data.order
@@ -20,7 +20,7 @@ const preview = works[0]?.data.images[0]?.src;
 <Base image={preview}>
   {
     scale && (
-      <div style={`--mm: ${scale.mm}px; --box-h: ${scale.boxH}px`}>
+      <div style={scaleVars(scale)}>
         {works.map((work, i) => (
           <Work work={work} mm={scale.mm} eager={i === 0} />
         ))}

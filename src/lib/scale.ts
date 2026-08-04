@@ -45,11 +45,25 @@ export function scaleFor(works: Work[]) {
   );
   if (sizes.length === 0) return null;
 
-  // One millimetre, in px.
-  const mm = CONTENT_WIDTH / Math.max(...sizes.map((s) => s.w));
+  const widest = Math.max(...sizes.map((s) => s.w));
   const tallest = Math.max(...sizes.map((s) => s.h));
 
-  return { mm, boxH: Math.round(tallest * mm) + BOX_PADDING * 2 };
+  // One millimetre, in px, at full size.
+  return { mm: CONTENT_WIDTH / widest, widest, tallest };
+}
+
+/**
+ * The CSS the works wrapper carries.
+ *
+ * --mm shrinks once the widest work no longer fits the viewport, which keeps
+ * every work proportional to every other one instead of clamping each image
+ * separately. --box-h follows from it, so the box shrinks in step.
+ */
+export function scaleVars({ mm, widest, tallest }: NonNullable<ReturnType<typeof scaleFor>>) {
+  return [
+    `--mm: min(${mm}px, (100vw - 2 * var(--gutter)) / ${widest})`,
+    `--box-h: calc(${tallest} * var(--mm) + ${BOX_PADDING * 2}px)`,
+  ].join('; ');
 }
 
 /**
