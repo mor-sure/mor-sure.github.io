@@ -1,0 +1,98 @@
+---
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { slideSize } from '../lib/scale';
+
+interface Props {
+  work: CollectionEntry<'works'>;
+  mm: number;
+  /** Set on the first work only: its opening slide is the LCP image. */
+  eager?: boolean;
+}
+
+const { work, mm, eager = false } = Astro.props;
+const { title, caption, images } = work.data;
+
+const slides = images.map((slide) => {
+  const { w } = slideSize(work.data, slide);
+  // 1× width; densities emits the 2× candidate alongside it.
+  return { ...slide, w, width: Math.round(w * mm) };
+});
+---
+
+<figure class="work">
+  <div class="box">
+    <div class="slides" data-slides>
+      {
+        slides.map((slide, i) => (
+          <div class="slide">
+            <Picture
+              src={slide.src}
+              formats={['avif', 'webp']}
+              fallbackFormat="jpeg"
+              width={slide.width}
+              densities={[1, 2]}
+              alt={slide.alt ?? title}
+              loading={eager && i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={eager && i === 0 ? 'high' : undefined}
+              style={`--w: ${slide.w}`}
+            />
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      slides.length > 1 && (
+        <>
+          <button class="nav prev" data-prev aria-label={`${title}: previous image`}>
+            ‹
+          </button>
+          <button class="nav next" data-next aria-label={`${title}: next image`}>
+            ›
+          </button>
+        </>
+      )
+    }
+  </div>
+
+  <figcaption>
+    <span class="caption">{caption}</span>
+    {slides.length > 1 && <span class="counter" data-counter>1/{slides.length}</span>}
+  </figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
+    const slides = work.querySelector<HTMLElement>('[data-slides]');
+    if (!slides) return;
+
+    const total = slides.children.length;
+    if (total < 2) return;
+
+    // Reveals the arrows: without JS they would render but do nothing.
+    work.dataset.ready = '';
+
+    const counter = work.querySelector<HTMLElement>('[data-counter]');
+    const current = () => Math.round(slides.scrollLeft / slides.clientWidth);
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Wraps at both ends, so next from the last slide returns to the first.
+    const step = (direction: number) => {
+      const next = (current() + direction + total) % total;
+      slides.scrollTo({
+        left: next * slides.clientWidth,
+        behavior: still.matches ? 'auto' : 'smooth',
+      });
+    };
+
+    work.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
+    work.querySelector('[data-next]')?.addEventListener('click', () => step(1));
+
+    if (counter) {
+      slides.addEventListener('scroll', () => {
+        counter.textContent = `${current() + 1}/${total}`;
+      });
+    }
+  });
+</script>

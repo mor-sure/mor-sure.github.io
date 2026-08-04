@@ -1,14 +1,28 @@
 ---
+import { getImage } from 'astro:assets';
 import site from '../data/site.json';
+import { PAGE_WIDTH } from '../lib/scale';
 import '../styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
+  /** Used for the social preview; pages pass their most representative image. */
+  image?: ImageMetadata;
 }
 
-const { title, description = site.tagline } = Astro.props;
-const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+const { title, description = site.tagline, image } = Astro.props;
+const pageTitle = title ? `${title} — ${site.name}` : site.name;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const preview = image ? await getImage({ src: image, width: 1200, format: 'jpeg' }) : undefined;
+const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
+
+const path = Astro.url.pathname;
+const nav = [
+  { label: 'works', href: '/' },
+  { label: 'about', href: '/about/' },
+];
 ---
 
 <!doctype html>
@@ -18,20 +32,35 @@ const pageTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    {previewUrl && <meta property="og:image" content={previewUrl} />}
+    <meta name="twitter:card" content={previewUrl ? 'summary_large_image' : 'summary'} />
   </head>
-  <body>
-    <header>
-      <a href="/" class="name">{site.name}</a>
+  <body style={`--column: ${PAGE_WIDTH}px`}>
+    <header class="site-header column">
+      <a href="/" class="site-name">{site.name}</a>
+
+      <nav>
+        {
+          nav.map((item, i) => (
+            <>
+              {i > 0 && <span class="sep">/</span>}
+              <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
+            </>
+          ))
+        }
+      </nav>
     </header>
 
-    <main>
+    <main class="column">
       <slot />
     </main>
-
-    <footer>
-      <a href={`mailto:${site.email}`}>{site.email}</a>
-      {site.links.map((l) => <a href={l.url}>{l.label}</a>)}
-    </footer>
   </body>
 </html>

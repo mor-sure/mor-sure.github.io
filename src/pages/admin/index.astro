@@ -1,0 +1,20 @@
+---
+// An Astro page rather than a static file in public/, so that /admin/ resolves
+// in `astro dev` as well as in the built site. config.yml stays in
+// public/admin/ so Decap can fetch it unprocessed.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Pinned exactly: a version range resolves at page load, so the CMS could
+         change under the editor with no commit, and makes SRI impossible. -->
+    <script is:inline src="https://unpkg.com/decap-cms@3.15.1/dist/decap-cms.js"></script>
+  </body>
+</html>

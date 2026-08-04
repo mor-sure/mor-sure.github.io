@@ -1,10 +1,9 @@
 {
-  "name": "Mor Sure",
-  "tagline": "Writer",
-  "about": "Short intro goes here. Edit this in the CMS under Site Settings.",
-  "email": "hello@example.com",
-  "links": [
-    { "label": "Instagram", "url": "https://instagram.com/" },
-    { "label": "LinkedIn", "url": "https://linkedin.com/" }
-  ]
+  "name": "Martin Sigler",
+  "tagline": "Editorials and printed matter",
+  "email": "martinsigler.ltd@gmail.com",
+  "instagram": "@mor__sure",
+  "instagram_url": "https://instagram.com/mor__sure",
+  "about": "Martin Sigler is a writer and researcher working with printed matter — magazines, books and booklets.",
+  "photo": "/src/assets/uploads/tea.jpeg"
 }

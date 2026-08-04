@@ -1,28 +1,30 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import site from '../data/site.json';
+import Work from '../components/Work.astro';
+import { scaleFor, checkAspect } from '../lib/scale';
 
-const projects = (await getCollection('projects', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
 );
+
+checkAspect(works);
+
+// null when there are no works to measure.
+const scale = scaleFor(works);
+
+// The opening cover doubles as the social preview.
+const preview = works[0]?.data.images[0]?.src;
 ---
 
-<Base>
-  <h1>{site.name}</h1>
-  <p class="tagline">{site.tagline}</p>
-  <p>{site.about}</p>
-
-  <ul class="projects">
-    {
-      projects.map((project) => (
-        <li>
-          <a href={`/projects/${project.id}/`}>
-            <h2>{project.data.title}</h2>
-            <p class="muted">{project.data.description}</p>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+<Base image={preview}>
+  {
+    scale && (
+      <div style={`--mm: ${scale.mm}px; --box-h: ${scale.boxH}px`}>
+        {works.map((work, i) => (
+          <Work work={work} mm={scale.mm} eager={i === 0} />
+        ))}
+      </div>
+    )
+  }
 </Base>

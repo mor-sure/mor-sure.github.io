@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- A page, in roughly A4 proportion. Replace with a real mark. -->
+  <rect width="32" height="32" fill="#fff" />
+  <rect x="7.5" y="4" width="17" height="24" fill="#1a1a1a" />
+</svg>

@@ -1,0 +1,40 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+
+const paragraphs = site.about.split('\n\n');
+
+// site.json is plain data, so the photo path can't use the image() schema
+// helper. Globbing src/assets/uploads keeps it CMS-editable while still going
+// through Astro's image pipeline.
+const uploads = import.meta.glob<{ default: ImageMetadata }>('/src/assets/uploads/**');
+const entry = site.photo ? uploads[site.photo] : undefined;
+const photo = entry ? (await entry()).default : undefined;
+---
+
+<Base title="About" image={photo}>
+  <div class="about">
+    {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+
+    <p class="contact">
+      <a href={`mailto:${site.email}`}>{site.email}</a><br />
+      <a href={site.instagram_url}>{site.instagram}</a>
+    </p>
+
+    {
+      photo && (
+        <Picture
+          src={photo}
+          widths={[400, 800]}
+          sizes="400px"
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          alt={site.name}
+          loading="eager"
+          fetchpriority="high"
+        />
+      )
+    }
+  </div>
+</Base>
