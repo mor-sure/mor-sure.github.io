@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: mor-sure/mor-sure.github.io
+  branch: main
+  # GitHub's OAuth flow needs a small server to exchange the code for a token.
+  # Point base_url at one (e.g. a Cloudflare Worker or Netlify site running
+  # decap-oauth), then uncomment both lines:
+  # base_url: https://your-oauth-proxy.example.com
+  # auth_endpoint: /auth
+
+# Lets `npm run cms` + `npm run dev` edit local files with no login.
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    folder: src/content/projects
+    create: true
+    slug: '{{slug}}'
+    extension: md
+    format: frontmatter
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Short description, widget: string }
+      - { name: date, label: Date, widget: datetime, picker_utc: true }
+      - { name: cover, label: Cover image, widget: image, required: false }
+      - { name: link, label: External link, widget: string, required: false }
+      - { name: draft, label: Draft, widget: boolean, default: false }
+      - { name: body, label: Body, widget: markdown, required: false }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - name: site
+        label: Site
+        file: src/data/site.json
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: about, label: About, widget: text }
+          - { name: email, label: Email, widget: string }
+          - name: links
+            label: Links
+            widget: list
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: url, label: URL, widget: string }

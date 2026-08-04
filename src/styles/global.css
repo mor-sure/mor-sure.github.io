@@ -1,0 +1,84 @@
+:root {
+  --ink: #17171a;
+  --muted: #6b6b73;
+  --bg: #fff;
+  --rule: #e6e6ea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  max-width: 44rem;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+header {
+  margin-bottom: 3rem;
+}
+
+.name {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  line-height: 1.25;
+}
+
+.tagline,
+.muted {
+  color: var(--muted);
+}
+
+.projects {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+}
+
+.projects li + li {
+  border-top: 1px solid var(--rule);
+}
+
+.projects a {
+  display: block;
+  padding: 1rem 0;
+  text-decoration: none;
+}
+
+.projects a:hover h2 {
+  text-decoration: underline;
+}
+
+.projects h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--muted);
+}

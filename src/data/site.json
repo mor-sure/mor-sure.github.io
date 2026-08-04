@@ -1,0 +1,10 @@
+{
+  "name": "Mor Sure",
+  "tagline": "Writer",
+  "about": "Short intro goes here. Edit this in the CMS under Site Settings.",
+  "email": "hello@example.com",
+  "links": [
+    { "label": "Instagram", "url": "https://instagram.com/" },
+    { "label": "LinkedIn", "url": "https://linkedin.com/" }
+  ]
+}
