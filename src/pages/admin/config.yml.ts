@@ -17,10 +17,8 @@ const CONFIG = `backend:
   name: github
   repo: mor-sure/mor-sure.github.io
   branch: main
-  # GitHub's OAuth flow needs a small server to exchange the code for a token.
-  # Point base_url at one, then uncomment both lines:
-  # base_url: https://your-oauth-proxy.example.com
-  # auth_endpoint: /auth
+  base_url: https://decap-auth.bfqyptmpb8.workers.dev
+  auth_endpoint: auth
 ${import.meta.env.DEV ? LOCAL_BACKEND : ''}
 # Scans live in src/ so Astro can optimise them. public_folder is relative
 # because it is written into frontmatter, and Astro resolves image paths from
