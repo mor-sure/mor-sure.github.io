@@ -1,0 +1,42 @@
+---
+import { Picture } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { PAGE_WIDTH } from '../lib/scale';
+
+type OnlineWorkEntry = Extract<CollectionEntry<'works'>, { data: { type: 'online' } }>;
+
+interface Props {
+  work: OnlineWorkEntry;
+  /** Set on the first work only: its hero is the LCP image. */
+  eager?: boolean;
+}
+
+const { work, eager = false } = Astro.props;
+const { title, caption, url, image, alt } = work.data;
+
+// A screen ratio, not a paper one — there's no physical object behind an
+// online piece, so it gets a plain 16:9 hero instead of the frame mechanic.
+const heroHeightPx = Math.round((PAGE_WIDTH * 9) / 16);
+---
+
+<figure class="work web-piece">
+  <a class="web-link" href={url} target="_blank" rel="noopener">
+    <span class="web-tag">Online</span>
+    <div class="web-art">
+      <Picture
+        src={image}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpeg"
+        width={PAGE_WIDTH}
+        height={heroHeightPx}
+        densities={[1, 2]}
+        class="art"
+        alt={alt ?? title}
+        loading={eager ? 'eager' : 'lazy'}
+        fetchpriority={eager ? 'high' : undefined}
+      />
+    </div>
+  </a>
+
+  <figcaption>{caption}</figcaption>
+</figure>

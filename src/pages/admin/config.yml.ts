@@ -38,31 +38,59 @@ collections:
     sortable_fields: [order, title]
     summary: '{{order}} — {{title}}'
     fields:
+      - name: type
+        label: Type
+        widget: select
+        options: [print, online]
+        default: print
+        hint: >-
+          Print = a scanned object, shown in a frame'd carousel at its real
+          proportions. Online = a link-out card for a web piece, no frame.
+          Only fill in the fields below that match the type you pick — Decap
+          can't hide the other type's fields, but Astro validates them at
+          build time.
       - { name: title, label: Title, widget: string }
       - name: caption
         label: Caption
         widget: text
         hint: Shown under the box. Title, then a sentence or two.
       - name: width_mm
-        label: Cover width (mm)
+        label: 'Print only — cover width (mm)'
         widget: number
         value_type: int
         min: 1
+        required: false
         hint: Real width of the cover (first image). Sets its proportions inside the frame.
       - name: height_mm
-        label: Cover height (mm)
+        label: 'Print only — cover height (mm)'
         widget: number
         value_type: int
         min: 1
+        required: false
       - name: images
-        label: Images
+        label: 'Print only — images'
         label_singular: Image
         widget: list
+        required: false
         summary: '{{fields.src}}'
         hint: First image is the cover, shown at its real proportions. The rest are spreads, scaled to fit the frame.
         fields:
           - { name: src, label: Scan, widget: image }
           - { name: alt, label: Alt text, widget: string, required: false }
+      - name: url
+        label: 'Online only — link'
+        widget: string
+        required: false
+        hint: Where the "Online" tag links out to.
+      - name: image
+        label: 'Online only — hero image'
+        widget: image
+        required: false
+        hint: Cropped to a 16:9 screen ratio, not a paper one.
+      - name: alt
+        label: 'Online only — hero alt text'
+        widget: string
+        required: false
       - name: order
         label: Order
         widget: number

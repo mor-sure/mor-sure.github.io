@@ -1,0 +1,203 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { PAGE_WIDTH, FRAME_RATIO, MM_SCALE } from '../lib/scale';
+
+type PrintWorkEntry = Extract<CollectionEntry<'works'>, { data: { type: 'print' } }>;
+
+interface Props {
+  work: PrintWorkEntry;
+  /** Set on the first work only: its cover is the LCP image. */
+  eager?: boolean;
+}
+
+const { work, eager = false } = Astro.props;
+const { title, caption, images, width_mm, height_mm } = work.data;
+
+// The cover renders at its real size (width_mm/height_mm × MM_SCALE), not the
+// frame's size — a physically bigger cover renders bigger, letterboxed inside
+// the same fixed frame as a physically smaller one. Expressed as a percentage
+// of the frame so it stays responsive as the frame itself scales.
+const frameHeightPx = PAGE_WIDTH / FRAME_RATIO;
+const coverWidthPx = Math.round(width_mm * MM_SCALE);
+const coverHeightPx = Math.round(height_mm * MM_SCALE);
+const coverWidthPct = (coverWidthPx / PAGE_WIDTH) * 100;
+const coverHeightPct = (coverHeightPx / frameHeightPx) * 100;
+
+// A separate, larger source for the lightbox — the inline carousel thumbnails
+// stay small (they load as part of the page), but the lightbox is an
+// on-demand "look closer" view where print detail should hold up. ~1800px
+// wide at quality 85 lands close to 600KB per image.
+const fullImages = await Promise.all(
+  images.map((slide) => getImage({ src: slide.src, width: 1800, format: 'webp', quality: 85 }))
+);
+---
+
+<figure class="work">
+  <div
+    class="frame"
+    data-frame
+    style={`--cover-w: ${coverWidthPct}%; --cover-h: ${coverHeightPct}%`}
+  >
+    <div class="slides" data-slides>
+      {
+        images.map((slide, i) =>
+          i === 0 ? (
+            <div class="slide" data-cover data-full={fullImages[i].src}>
+              <Picture
+                src={slide.src}
+                formats={['avif', 'webp']}
+                fallbackFormat="jpeg"
+                width={coverWidthPx}
+                height={coverHeightPx}
+                densities={[1, 2]}
+                class="art"
+                alt={slide.alt ?? title}
+                loading={eager ? 'eager' : 'lazy'}
+                fetchpriority={eager ? 'high' : undefined}
+              />
+            </div>
+          ) : (
+            <div class="slide" data-full={fullImages[i].src}>
+              <Picture
+                src={slide.src}
+                formats={['avif', 'webp']}
+                fallbackFormat="jpeg"
+                width={PAGE_WIDTH}
+                height={Math.round(PAGE_WIDTH * (slide.src.height / slide.src.width))}
+                densities={[1, 2]}
+                class="art"
+                alt={slide.alt ?? title}
+                loading="lazy"
+              />
+            </div>
+          )
+        )
+      }
+    </div>
+
+    {
+      images.length > 1 && (
+        <>
+          <button class="nav prev" data-prev aria-label={`${title}: previous image`}>
+            ‹
+          </button>
+          <button class="nav next" data-next aria-label={`${title}: next image`}>
+            ›
+          </button>
+        </>
+      )
+    }
+    <button class="expand" data-expand aria-label={`${title}: expand image`}>⤢</button>
+  </div>
+
+  {images.length > 1 && <div class="dots" data-dots />}
+
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<script>
+  let activeAdvance: (() => void) | null = null;
+
+  function getLightbox() {
+    let box = document.getElementById('lightbox');
+    if (box) return box;
+
+    box = document.createElement('div');
+    box.id = 'lightbox';
+    box.className = 'lightbox';
+    box.innerHTML = `<button class="lightbox-close" aria-label="Close">×</button><img class="lightbox-img" alt="">`;
+    document.body.append(box);
+
+    box.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.lightbox-close')) {
+        closeLightbox();
+        return;
+      }
+      activeAdvance?.();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    return box;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox')?.classList.remove('active');
+    activeAdvance = null;
+  }
+
+  function openLightbox(getActiveSlide: () => HTMLElement | undefined, advance: () => void) {
+    const box = getLightbox();
+    const img = box.querySelector<HTMLImageElement>('.lightbox-img')!;
+
+    const render = () => {
+      const slide = getActiveSlide();
+      const full = slide?.dataset.full;
+      const inline = slide?.querySelector('img');
+      if (!full && !inline) return;
+      img.src = full || inline!.currentSrc || inline!.src;
+      img.alt = inline?.alt ?? '';
+    };
+
+    activeAdvance = () => {
+      advance();
+      render();
+    };
+    render();
+    box.classList.add('active');
+  }
+
+  document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
+    const slidesEl = work.querySelector<HTMLElement>('[data-slides]');
+    const frame = work.querySelector<HTMLElement>('[data-frame]');
+    if (!slidesEl || !frame) return;
+
+    const slides = [...slidesEl.children] as HTMLElement[];
+    const total = slides.length;
+
+    // Reveals the arrows: without JS they would render but do nothing.
+    work.dataset.ready = '';
+
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const current = () => Math.round(slidesEl.scrollLeft / slidesEl.clientWidth);
+
+    const goTo = (i: number) => {
+      const next = (i + total) % total;
+      slidesEl.scrollTo({ left: next * slidesEl.clientWidth, behavior: still.matches ? 'auto' : 'smooth' });
+    };
+
+    const dotsWrap = work.querySelector<HTMLElement>('[data-dots]');
+    if (dotsWrap && total > 1) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.append(dot);
+      });
+      const dots = [...dotsWrap.children];
+      slidesEl.addEventListener('scroll', () => {
+        const i = current();
+        dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
+      });
+    }
+
+    work.querySelector('[data-prev]')?.addEventListener('click', () => goTo(current() - 1));
+    work.querySelector('[data-next]')?.addEventListener('click', () => goTo(current() + 1));
+
+    // Clicking anywhere in the frame — outside the arrows/expand — advances.
+    frame.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.nav, .expand')) return;
+      if (total > 1) goTo(current() + 1);
+    });
+
+    work.querySelector('[data-expand]')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openLightbox(
+        () => slides[current()],
+        () => goTo(current() + 1)
+      );
+    });
+  });
+</script>

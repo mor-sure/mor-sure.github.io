@@ -38,11 +38,14 @@ type Work = CollectionEntry<'works'>;
  * Warn when a cover's own proportions disagree with the millimetres entered
  * for it — usually a typo, a swapped width/height, or an uncropped scan with
  * white margins. Display is never distorted; the object just isn't the size
- * claimed. Only the cover (slide 1) claims a real size — spreads scale to fit
- * the frame regardless of their real dimensions.
+ * claimed. Only print works' covers (slide 1) claim a real size — online
+ * works carry no real-world dimensions, and spreads scale to fit the frame
+ * regardless of their real dimensions.
  */
 export function checkAspect(works: Work[], tolerance = 0.03) {
   for (const work of works) {
+    if (work.data.type !== 'print') continue;
+
     const cover = work.data.images[0];
     if (!cover) continue;
 
