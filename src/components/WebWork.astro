@@ -3,7 +3,10 @@ import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { PAGE_WIDTH } from '../lib/scale';
 
-type OnlineWorkEntry = Extract<CollectionEntry<'works'>, { data: { type: 'online' } }>;
+type Work = CollectionEntry<'works'>;
+// See PrintWork.astro for why this extracts Work['data'] rather than Work
+// itself.
+export type OnlineWorkEntry = Omit<Work, 'data'> & { data: Extract<Work['data'], { type: 'online' }> };
 
 interface Props {
   work: OnlineWorkEntry;

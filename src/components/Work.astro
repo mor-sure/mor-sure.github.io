@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import PrintWork from './PrintWork.astro';
-import WebWork from './WebWork.astro';
+import PrintWork, { type PrintWorkEntry } from './PrintWork.astro';
+import WebWork, { type OnlineWorkEntry } from './WebWork.astro';
 
 interface Props {
   work: CollectionEntry<'works'>;
@@ -10,6 +10,16 @@ interface Props {
 }
 
 const { work, eager = false } = Astro.props;
+const isOnline = work.data.type === 'online';
 ---
 
-{work.data.type === 'online' ? <WebWork work={work} eager={eager} /> : <PrintWork work={work} eager={eager} />}
+{
+  // TS doesn't propagate the `work.data.type` narrowing above to `work`
+  // itself once it crosses a JSX prop boundary — these casts are exactly as
+  // safe as the runtime check on the line above, no more.
+  isOnline ? (
+    <WebWork work={work as OnlineWorkEntry} eager={eager} />
+  ) : (
+    <PrintWork work={work as PrintWorkEntry} eager={eager} />
+  )
+}

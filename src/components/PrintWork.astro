@@ -3,7 +3,12 @@ import { Picture, getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { PAGE_WIDTH, FRAME_RATIO, MM_SCALE } from '../lib/scale';
 
-type PrintWorkEntry = Extract<CollectionEntry<'works'>, { data: { type: 'print' } }>;
+type Work = CollectionEntry<'works'>;
+// Extract against the whole entry type resolves to `never` — CollectionEntry
+// isn't a naked union TS can distribute over. Extracting the `data` field's
+// own union (which the discriminatedUnion schema does produce) and
+// recombining is what actually narrows.
+export type PrintWorkEntry = Omit<Work, 'data'> & { data: Extract<Work['data'], { type: 'print' }> };
 
 interface Props {
   work: PrintWorkEntry;
