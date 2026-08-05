@@ -14,7 +14,7 @@ export const RATIO = 1.25;
  * directly rather than derived from the scale (matches the brief prototype's
  * own .wrap max-width).
  */
-export const PAGE_WIDTH = 560;
+export const PAGE_WIDTH = 520;
 
 /**
  * Width : height of every project's frame. Fixed site-wide (see the brief) —

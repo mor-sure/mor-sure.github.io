@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
 :root {
   --ink: #1a1a1a;
   --bg: #fff;
@@ -37,11 +39,8 @@ body {
   padding: 1.5rem 0 6rem;
   background: var(--bg);
   color: var(--ink);
-  /* 'Kormelink' is the typeface the design calls for, but its licence covers
-     desktop use only — the file isn't bundled here, so this falls through to
-     Inter (once licensed/loaded) or the system stack. */
-  font-family: 'Kormelink', 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: var(--xs);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: var(--sm);
   line-height: 1.45;
 }
 
@@ -62,7 +61,7 @@ a {
    bio (see nameHref in Base.astro). A border under the last line divides the
    header from the works below. */
 .site-header {
-  margin-bottom: calc(var(--space-5) * 1.8);
+  margin-bottom: calc(var(--space-5) * 1.4);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid #eaeaea;
 }
@@ -70,26 +69,27 @@ a {
 .site-name,
 .site-line {
   display: block;
-  font-size: var(--xs);
+  font-size: var(--sm);
   line-height: 1.4;
 }
 
 .site-name {
-  text-decoration: underline;
+  color: #1a56db;
+  text-decoration: none;
 }
 
 .site-line {
   color: inherit;
   text-decoration: none;
-  /* No extra margin — line-height's own leading (1.4 × 12.8px) already
-     separates the lines; adding margin on top of that stacked too much. */
+  /* No extra margin — line-height's own leading already separates the
+     lines; adding margin on top of that stacked too much. */
   margin-top: 0;
 }
 
 /* --- works -------------------------------------------------------------- */
 
 .work {
-  margin: 0 0 calc(var(--space-5) * 2.5);
+  margin: 0 0 calc(var(--space-5) * 2);
 }
 
 .frame {
@@ -317,6 +317,13 @@ figcaption {
 
 /* --- about -------------------------------------------------------------- */
 
+/* Now a section at the foot of the works page rather than its own page, so it
+   gets the same top divider the header gets at the bottom of the page. */
+.about {
+  padding-top: var(--space-4);
+  border-top: 1px solid #eaeaea;
+}
+
 .about p {
   margin: 0 0 var(--space-3);
 }
@@ -325,7 +332,12 @@ figcaption {
   display: block;
   width: min(100%, 400px);
   height: auto;
-  margin-top: calc(var(--space-5) * 1.5);
+  margin-bottom: var(--space-1);
+}
+
+.about-credit {
+  font-size: 10px;
+  color: #8a8a8a;
 }
 
 /* --- phones -------------------------------------------------------------- */

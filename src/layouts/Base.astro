@@ -17,10 +17,6 @@ const pageTitle = title ? `${title} — ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const preview = image ? await getImage({ src: image, width: 1200, format: 'jpeg' }) : undefined;
 const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
-
-// The name is the only nav: it goes to the bio from the works page, and
-// back to the works page from the bio.
-const nameHref = Astro.url.pathname === '/about/' ? '/' : '/about/';
 ---
 
 <!doctype html>
@@ -43,7 +39,7 @@ const nameHref = Astro.url.pathname === '/about/' ? '/' : '/about/';
   </head>
   <body style={`--column: ${PAGE_WIDTH}px; --frame-ratio: ${FRAME_RATIO}`}>
     <header class="site-header column">
-      <a href={nameHref} class="site-name">{site.name}</a>
+      <a href="#bio" class="site-name">{site.name}</a>
       <a href={`mailto:${site.email}`} class="site-line">{site.email}</a>
       <a href={site.instagram_url} class="site-line">{site.instagram}</a>
     </header>

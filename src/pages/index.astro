@@ -1,7 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
+import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
+import site from '../data/site.json';
 import { checkAspect } from '../lib/scale';
 
 const works = (await getCollection('works', ({ data }) => !data.draft)).sort(
@@ -12,8 +14,37 @@ checkAspect(works);
 
 // The opening cover doubles as the social preview.
 const preview = works[0]?.data.images[0]?.src;
+
+// site.about carries inline HTML (e.g. <i> for a book title) rendered as-is
+// below via set:html — it's Martin's own trusted content, not user input.
+const paragraphs = site.about.split('\n\n');
+
+// site.json is plain data, so the photo path can't use the image() schema
+// helper. Globbing src/assets/uploads keeps it CMS-editable while still going
+// through Astro's image pipeline.
+const uploads = import.meta.glob<{ default: ImageMetadata }>('/src/assets/uploads/**');
+const entry = site.photo ? uploads[site.photo] : undefined;
+const photo = entry ? (await entry()).default : undefined;
 ---
 
 <Base image={preview}>
   {works.map((work, i) => <Work work={work} eager={i === 0} />)}
+
+  <section class="about" id="bio">
+    {
+      photo && (
+        <Picture
+          src={photo}
+          widths={[400, 800]}
+          sizes="400px"
+          formats={['avif', 'webp']}
+          fallbackFormat="jpeg"
+          alt={site.name}
+          loading="lazy"
+        />
+      )
+    }
+    {site.photo_credit && <p class="about-credit">{site.photo_credit}</p>}
+    {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
+  </section>
 </Base>

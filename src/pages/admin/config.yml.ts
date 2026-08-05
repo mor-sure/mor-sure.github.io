@@ -86,15 +86,19 @@ collections:
           - name: about
             label: About text
             widget: text
-            hint: Leave a blank line between paragraphs.
+            hint: Leave a blank line between paragraphs. HTML tags like <i>…</i> are allowed.
           - name: photo
             label: About photo
             widget: image
             required: false
-            # Absolute src/ path: about.astro globs this folder so the photo is
-            # optimised like the scans are.
+            # Absolute src/ path: index.astro globs this folder so the photo
+            # is optimised like the scans are.
             media_folder: /src/assets/uploads
             public_folder: /src/assets/uploads
+          - name: photo_credit
+            label: Photo credit
+            widget: string
+            required: false
 `;
 
 export const GET: APIRoute = () =>
