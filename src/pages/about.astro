@@ -17,11 +17,6 @@ const photo = entry ? (await entry()).default : undefined;
   <div class="about">
     {paragraphs.map((paragraph) => <p>{paragraph}</p>)}
 
-    <p class="contact">
-      <a href={`mailto:${site.email}`}>{site.email}</a><br />
-      <a href={site.instagram_url}>{site.instagram}</a>
-    </p>
-
     {
       photo && (
         <Picture

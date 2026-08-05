@@ -1,7 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
 import site from '../data/site.json';
-import { PAGE_WIDTH } from '../lib/scale';
+import { PAGE_WIDTH, FRAME_RATIO } from '../lib/scale';
 import '../styles/global.css';
 
 interface Props {
@@ -18,11 +18,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const preview = image ? await getImage({ src: image, width: 1200, format: 'jpeg' }) : undefined;
 const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
 
-const path = Astro.url.pathname;
-const nav = [
-  { label: 'works', href: '/' },
-  { label: 'about', href: '/about/' },
-];
+// The name is the only nav: it goes to the bio from the works page, and
+// back to the works page from the bio.
+const nameHref = Astro.url.pathname === '/about/' ? '/' : '/about/';
 ---
 
 <!doctype html>
@@ -43,20 +41,11 @@ const nav = [
     {previewUrl && <meta property="og:image" content={previewUrl} />}
     <meta name="twitter:card" content={previewUrl ? 'summary_large_image' : 'summary'} />
   </head>
-  <body style={`--column: ${PAGE_WIDTH}px`}>
+  <body style={`--column: ${PAGE_WIDTH}px; --frame-ratio: ${FRAME_RATIO}`}>
     <header class="site-header column">
-      <a href="/" class="site-name">{site.name}</a>
-
-      <nav>
-        {
-          nav.map((item, i) => (
-            <>
-              {i > 0 && <span class="sep">/</span>}
-              <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>{item.label}</a>
-            </>
-          ))
-        }
-      </nav>
+      <a href={nameHref} class="site-name">{site.name}</a>
+      <a href={`mailto:${site.email}`} class="site-line">{site.email}</a>
+      <a href={site.instagram_url} class="site-line">{site.instagram}</a>
     </header>
 
     <main class="column">

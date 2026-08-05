@@ -44,13 +44,13 @@ collections:
         widget: text
         hint: Shown under the box. Title, then a sentence or two.
       - name: width_mm
-        label: Width (mm)
+        label: Cover width (mm)
         widget: number
         value_type: int
         min: 1
-        hint: Real width of the printed object. Spreads measured opened flat.
+        hint: Real width of the cover (first image). Sets its proportions inside the frame.
       - name: height_mm
-        label: Height (mm)
+        label: Cover height (mm)
         widget: number
         value_type: int
         min: 1
@@ -59,20 +59,10 @@ collections:
         label_singular: Image
         widget: list
         summary: '{{fields.src}}'
+        hint: First image is the cover, shown at its real proportions. The rest are spreads, scaled to fit the frame.
         fields:
           - { name: src, label: Scan, widget: image }
           - { name: alt, label: Alt text, widget: string, required: false }
-          - name: width_mm
-            label: Width (mm) — override
-            widget: number
-            value_type: int
-            required: false
-            hint: Only if this image is a different size to the work above (e.g. a spread).
-          - name: height_mm
-            label: Height (mm) — override
-            widget: number
-            value_type: int
-            required: false
       - name: order
         label: Order
         widget: number

@@ -11,6 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
     <title>Content Manager</title>
+    <!-- Without this, visiting /admin (no trailing slash) resolves decap-cms's
+         relative config.yml fetch against the site root instead of /admin/,
+         404ing. GitHub Pages redirects bare /admin to /admin/; astro dev
+         doesn't, so this only bit locally. -->
+    <base href="/admin/" />
   </head>
   <body>
     <!-- Pinned exactly: a version range resolves at page load, so the CMS could

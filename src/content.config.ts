@@ -7,8 +7,9 @@ const works = defineCollection({
     z.object({
       title: z.string(),
       caption: z.string(),
-      // Real size of the printed object, in millimetres. Drives how much of the
-      // box the work fills. Spreads are measured opened flat.
+      // Real size of the cover (slide 1), in millimetres — sets its aspect
+      // ratio inside the frame. Spreads (slide 2+) scale to fit the frame
+      // regardless of their real size, so they carry no dimensions of their own.
       width_mm: z.number(),
       height_mm: z.number(),
       images: z
@@ -16,10 +17,6 @@ const works = defineCollection({
           z.object({
             src: image(),
             alt: z.string().optional(),
-            // Only needed when a slide differs from the work's default size —
-            // e.g. a spread inside a work whose default is the cover.
-            width_mm: z.number().optional(),
-            height_mm: z.number().optional(),
           })
         )
         .min(1),
