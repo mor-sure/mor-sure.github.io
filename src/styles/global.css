@@ -381,7 +381,7 @@ figcaption {
 
 .about img {
   display: block;
-  width: min(100%, 400px);
+  width: 100%;
   height: auto;
   margin-bottom: var(--space-1);
 }
