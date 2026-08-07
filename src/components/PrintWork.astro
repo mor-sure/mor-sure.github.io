@@ -102,7 +102,7 @@ const fullImages = await Promise.all(
 </figure>
 
 <script>
-  let activeAdvance: (() => void) | null = null;
+  let activeStep: ((direction: 1 | -1) => void) | null = null;
 
   function getLightbox() {
     let box = document.getElementById('lightbox');
@@ -119,10 +119,12 @@ const fullImages = await Promise.all(
         closeLightbox();
         return;
       }
-      activeAdvance?.();
+      activeStep?.(1);
     });
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') activeStep?.(1);
+      if (e.key === 'ArrowLeft') activeStep?.(-1);
     });
 
     return box;
@@ -130,10 +132,10 @@ const fullImages = await Promise.all(
 
   function closeLightbox() {
     document.getElementById('lightbox')?.classList.remove('active');
-    activeAdvance = null;
+    activeStep = null;
   }
 
-  function openLightbox(getActiveSlide: () => HTMLElement | undefined, advance: () => void) {
+  function openLightbox(getActiveSlide: () => HTMLElement | undefined, step: (direction: 1 | -1) => void) {
     const box = getLightbox();
     const img = box.querySelector<HTMLImageElement>('.lightbox-img')!;
 
@@ -146,8 +148,8 @@ const fullImages = await Promise.all(
       img.alt = inline?.alt ?? '';
     };
 
-    activeAdvance = () => {
-      advance();
+    activeStep = (direction) => {
+      step(direction);
       render();
     };
     render();
@@ -166,19 +168,52 @@ const fullImages = await Promise.all(
     work.dataset.ready = '';
 
     const still = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const current = () => Math.round(slidesEl.scrollLeft / slidesEl.clientWidth);
 
-    const goTo = (i: number) => {
+    // A clone of slide 0, appended after the real last slide, so stepping
+    // "next" off the end scrolls one more slide-width forward — like the
+    // real first slide is already right there — instead of smooth-scrolling
+    // all the way back across every slide in between. Once that scroll
+    // settles, an untransitioned jump swaps it for the real slide 0 as
+    // domIndex 0; because the clone is pixel-identical, nothing visibly
+    // changes. (Only this direction: the ask was specifically about running
+    // off the end, not the symmetric case going backward off the start.)
+    let hasClone = false;
+    if (total > 1) {
+      slidesEl.append(slides[0].cloneNode(true));
+      hasClone = true;
+    }
+
+    const domIndex = () => Math.round(slidesEl.scrollLeft / slidesEl.clientWidth);
+    // Wraps the clone (domIndex === total) back to real slide 0 for anything
+    // that indexes into `slides` (dots, the lightbox's "active" slide).
+    const current = () => domIndex() % total;
+
+    const goToIndex = (i: number) => {
       const next = (i + total) % total;
       slidesEl.scrollTo({ left: next * slidesEl.clientWidth, behavior: still.matches ? 'auto' : 'smooth' });
     };
+
+    // Unlike goToIndex, steps by one DOM position at a time without
+    // pre-wrapping — so stepping forward from the real last slide can land
+    // on the trailing clone rather than jumping straight back to domIndex 0.
+    const step = (direction: 1 | -1) => {
+      const target = domIndex() + direction;
+      const wrapped = hasClone && direction < 0 && target < 0 ? total - 1 : target;
+      slidesEl.scrollTo({ left: wrapped * slidesEl.clientWidth, behavior: still.matches ? 'auto' : 'smooth' });
+    };
+
+    if (hasClone) {
+      slidesEl.addEventListener('scrollend', () => {
+        if (domIndex() === total) slidesEl.scrollLeft = 0;
+      });
+    }
 
     const dotsWrap = work.querySelector<HTMLElement>('[data-dots]');
     if (dotsWrap && total > 1) {
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
         if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goTo(i));
+        dot.addEventListener('click', () => goToIndex(i));
         dotsWrap.append(dot);
       });
       const dots = [...dotsWrap.children];
@@ -188,20 +223,28 @@ const fullImages = await Promise.all(
       });
     }
 
-    work.querySelector('[data-prev]')?.addEventListener('click', () => goTo(current() - 1));
-    work.querySelector('[data-next]')?.addEventListener('click', () => goTo(current() + 1));
+    work.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
+    work.querySelector('[data-next]')?.addEventListener('click', () => step(1));
 
     // Clicking anywhere in the frame — outside the arrows/expand — advances.
     frame.addEventListener('click', (e) => {
       if ((e.target as HTMLElement).closest('.nav, .expand')) return;
-      if (total > 1) goTo(current() + 1);
+      if (total > 1) step(1);
     });
 
     work.querySelector('[data-expand]')?.addEventListener('click', (e) => {
       e.stopPropagation();
+      // Tracked locally rather than re-derived from current() each time:
+      // goToIndex's scroll is animated, so scrollLeft (which current() reads)
+      // hasn't caught up yet on the very next call — stepping through the
+      // lightbox quickly would render a stale slide until the scroll settled.
+      let i = current();
       openLightbox(
-        () => slides[current()],
-        () => goTo(current() + 1)
+        () => slides[i],
+        (direction) => {
+          i = (i + direction + total) % total;
+          goToIndex(i);
+        }
       );
     });
   });
