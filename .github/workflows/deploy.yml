@@ -40,6 +40,19 @@ jobs:
           key: astro-assets-${{ hashFiles('src/assets/**') }}
           restore-keys: astro-assets-
 
+      # Kormelink's license permits serving it from the live site via
+      # @font-face, but explicitly forbids uploading the font file to GitHub
+      # — so it never enters the repo (see .gitignore) and is decoded from a
+      # secret straight into place here instead. Skips cleanly if the secret
+      # isn't set, so forks/PRs still build without it.
+      - name: Add Kormelink font
+        if: ${{ secrets.KORMELINK_WOFF2_BASE64 != '' }}
+        env:
+          KORMELINK_WOFF2_BASE64: ${{ secrets.KORMELINK_WOFF2_BASE64 }}
+        run: |
+          mkdir -p public/fonts
+          echo "$KORMELINK_WOFF2_BASE64" | base64 -d > public/fonts/kormelink-roman.woff2
+
       - name: Build site
         run: npm run build
 

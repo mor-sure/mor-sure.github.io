@@ -4,3 +4,8 @@ dist/
 .claude/
 .DS_Store
 npm-debug.log*
+
+# Kormelink is licensed for web use but its terms explicitly forbid
+# uploading the font file to GitHub. It's injected from a repo secret at
+# deploy time instead — see .github/workflows/deploy.yml. Never commit it.
+public/fonts/
