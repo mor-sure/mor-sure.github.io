@@ -9,6 +9,6 @@ height_mm: 300
 images:
   - src: ../../assets/works/k41-cover.jpg
   - src: ../../assets/works/k41-spread-1.jpg
-order: 5
+order: 49
 draft: false
 ---
