@@ -1,9 +1,10 @@
 ---
 type: print
 title: WIP Magazine 09
-caption: '11.2023. WIP Magazine, Issue 09: Posthuman Futures. Contributed the
-  interview with Joaquim Bayle, following the premiere of "Precious", the skate
-  film he directed. '
+caption: >
+  11.2023. WIP MAGAZINE, ISSUE 09: POSTHUMAN FUTURES. Contributed the interview
+  with Joaquim Bayle, following the premiere of "Precious," the skate film he
+  directed.
 width_mm: 210
 height_mm: 280
 images:
