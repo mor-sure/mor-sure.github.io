@@ -98,7 +98,7 @@ const fullImages = await Promise.all(
 
   {images.length > 1 && <div class="dots" data-dots />}
 
-  <figcaption>{caption}</figcaption>
+<figcaption set:html={caption}></figcaption>
 </figure>
 
 <script>
