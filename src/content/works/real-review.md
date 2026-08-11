@@ -10,6 +10,6 @@ images:
   - src: ../../assets/works/rr13-cover.jpg
   - src: ../../assets/works/rr13-spread-1.png
   - src: ../../assets/works/rr13-spread-2.jpg
-order: 6
+order: 50
 draft: false
 ---
