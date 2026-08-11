@@ -1,9 +1,9 @@
 ---
 type: print
 title: KALEIDOSCOPE 41
-caption: '01.2023. KALEIDOSCOPE, ISSUE 41. Contributed the article "Air Afrique:
-  A Lost Imagination," based on interviews with Djiby Kebe, Jérémy Konko, Zhedy
-  Nuentsa and Ahmadou-Bamba Thiam.'
+caption: "<b>01.2023. KALEIDOSCOPE 41.</b> Contributed the article <i>Air
+  Afrique: A Lost Imagination</i>, based on interviews with Djiby Kebe, Jérémy
+  Konko, Zhedy Nuentsa and Ahmadou-Bamba Thiam."
 width_mm: 230
 height_mm: 300
 images:
