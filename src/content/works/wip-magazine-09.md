@@ -1,20 +1,15 @@
 ---
 type: print
 title: WIP Magazine 09
-caption: >
-  05.2023. WIP Magazine, Issue 08: Heavy Industry. Contributed the article
-  "Machine Learning", a history of techno through a Black perspective, built
-  from an interview with DeForrest Brown Jr. around the release of his debut
-  book, "Assembling a Black Counter Culture" (August 2022). Also featured: an
-  article on BlackMass Publishing.
+caption: '11.2023. WIP Magazine, Issue 09: Posthuman Futures. Contributed the
+  article "Precious", built from an interview with Joaquim Bayle, around the
+  release of "Precious", the Carhartt WIP Skate movie. '
 width_mm: 210
 height_mm: 280
 images:
-  - src: ../../assets/works/wip-08_cover.jpg
-  - src: ../../assets/works/wip-08_spread-1.jpg
-  - src: ../../assets/works/wip-08_spread-2.jpg
-  - src: ../../assets/works/wip-08_spread-3.jpg
-  - src: ../../assets/works/wip-08_spread-4.jpg
+  - src: ../../assets/works/wip-09_cover.jpg
+  - src: ../../assets/works/wip-09_spread-1.jpg
+  - src: ../../assets/works/wip-09_spread-2.jpg
 order: 47
 draft: false
 ---
