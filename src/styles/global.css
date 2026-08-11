@@ -153,6 +153,13 @@ a {
   display: block;
   width: 100%;
   height: 100%;
+  filter: grayscale(100%) contrast(150%);
+  transition: filter .4s ease;
+}
+
+.frame:hover .art,
+.frame.revealed .art {
+  filter: grayscale(0%) contrast(100%);
 }
 
 /* Slide 1 — the cover: picture itself is sized to the real proportions
