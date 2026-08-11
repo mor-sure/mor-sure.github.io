@@ -2,7 +2,7 @@
 type: print
 title: WIP Magazine 08
 caption: >
-  05.2023. WIP Magazine, Issue 08: Heavy Industry. Contributions include
+  05.2023. WIP Magazine, Issue 08: Heavy Industry. Contributed the article
   "Machine Learning", a history of techno through a Black perspective, built
   from an interview with DeForrest Brown Jr. around the release of his debut
   book, "Assembling a Black Counter Culture" (August 2022). Also featured: an
