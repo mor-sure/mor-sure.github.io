@@ -1,11 +1,11 @@
 ---
 type: print
 title: MANIFESTO
-caption: '06.2024. MANIFESTO. Contributed the interview with Liv.e. Online
+caption: 06.2024. MANIFESTO. Contributed the interview with Liv.e. Online
   version <a
   href="https://www.goat.com/en-de/editorial/liv-e-olivia-williams-music-artist-interview">here</a>.
   Elsewhere, written bios of Nicholas Daley, Carhartt WIP, Chito, Emma dj,
-  Florence Sinclair, and Ssaliva. '
+  Florence Sinclair, and Sassliva.
 width_mm: 230
 height_mm: 300
 images:
