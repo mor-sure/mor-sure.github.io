@@ -1,10 +1,10 @@
 ---
 type: print
 title: WIP Magazine 08
-caption: '05.2023. WIP MAGAZINE, ISSUE 08: HEAVY INDUSTRY. Contributed the
-  article "Machine Learning," a history of techno through a Black perspective,
-  based on an interview with DeForrest Brown Jr. Also featured: an intro to
-  BlackMass Publishing.'
+caption: "<b>05.2023. WIP Magazine 08: Heavy Industry</b>. Contributed the
+  article <i>Machine Learning</i>, a history of techno through a Black
+  perspective, based on an interview with DeForrest Brown Jr. Also featured: an
+  intro to BlackMass Publishing."
 width_mm: 210
 height_mm: 280
 images:
