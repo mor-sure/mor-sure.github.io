@@ -15,6 +15,6 @@ images:
   - src: ../../assets/works/wip-08_spread-2.jpg
   - src: ../../assets/works/wip-08_spread-3.jpg
   - src: ../../assets/works/wip-08_spread-4.jpg
-order: 4
+order: 48
 draft: false
 ---
