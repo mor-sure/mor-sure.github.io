@@ -1,8 +1,8 @@
 ---
 type: print
 title: Love Injection 70
-caption: 05.2024. LOVE INJECTION, ISSUE 70. Contributed the article "Dweller
-  Forever," a review of the Dweller festival 2024 edition.
+caption: <b>05.2024. Love Injection 70.</b> Contributed the article <i>Dweller
+  Forever</i>, a review of the Dweller festival 2024 edition.
 width_mm: 205
 height_mm: 280
 images:
