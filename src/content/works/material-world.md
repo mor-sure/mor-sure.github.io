@@ -10,20 +10,13 @@ caption: "06.2025. WIP Magazine, Issue 11: Material World. Contributions include
 width_mm: 210
 height_mm: 280
 images:
-  - src: ../../assets/works/wip-11_cover.png
-    alt: WIP Magazine 11, Material World — cover
-  - src: ../../assets/works/wip-11_spread-1.png
-    alt: WIP Magazine 11, Material World — spread
-  - src: ../../assets/works/wip-11_spread-2.png
-    alt: WIP Magazine 11, Material World — spread
-  - src: ../../assets/works/wip-11_spread-3.png
-    alt: WIP Magazine 11, Material World — spread
-  - src: ../../assets/works/wip-11_spread-4.png
-    alt: WIP Magazine 11, Material World — spread
-  - src: ../../assets/works/wip-11_spread-5.png
-    alt: WIP Magazine 11, Material World — spread
-  - src: ../../assets/works/wip-11_spread-6.png
-    alt: WIP Magazine 11, Material World — spread
+  - src: ../../assets/works/wip-11_cover.jpg
+  - src: ../../assets/works/wip-11_spread-1.jpg
+  - src: ../../assets/works/wip-11_spread-2.jpg
+  - src: ../../assets/works/wip-11_spread-3.jpg
+  - src: ../../assets/works/wip-11_spread-4.jpg
+  - src: ../../assets/works/wip-11_spread-5.jpg
+  - src: ../../assets/works/wip-11_spread-6.jpg
 order: 1
 draft: false
 ---
