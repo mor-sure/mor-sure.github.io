@@ -2,8 +2,8 @@
 type: print
 title: WIP Magazine 09
 caption: '11.2023. WIP Magazine, Issue 09: Posthuman Futures. Contributed the
-  article "Precious", built from an interview with Joaquim Bayle, around the
-  release of "Precious", the Carhartt WIP Skate movie. '
+  interview with Joaquim Bayle, following the premiere of "Precious", the skate
+  film he directed. '
 width_mm: 210
 height_mm: 280
 images:
