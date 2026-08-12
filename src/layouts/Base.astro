@@ -43,8 +43,8 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
   <span class="site-name">{site.name}</span>
   <a href="#bio" class="site-line">bio</a>
   <a href={`mailto:${site.email}`} class="site-line">{site.email}</a>
-  <a href={site.instagram_url} class="site-line">{site.instagram}</a>
-  <a href={site.bandcamp_url} class="site-line">bandcamp</a>
+  <a href={site.instagram_url} class="site-line" target="_blank" rel="noopener">{site.instagram}</a>
+  <a href={site.bandcamp_url} class="site-line" target="_blank" rel="noopener">bandcamp</a>
 </header>
 
     <main class="column">
