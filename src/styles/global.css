@@ -104,14 +104,43 @@ a {
   margin: 0 0 calc(var(--space-5) * 2);
 }
 
-.frame {
+/*.frame {
   position: relative;
   width: 100%;
   aspect-ratio: var(--frame-ratio);
   overflow: hidden;
   background: #fafafa;
   cursor: pointer;
+}*/ 
+
+.frame { 
+   width: 100%; 
+   aspect-ratio: 420 / 594; 
+   position: relative; 
+   background: #fff; 
+   overflow: hidden; 
 }
+.frame img.cover{ 
+   display:none; 
+   position:absolute; 
+   top:50%; 
+   left:50%; 
+   transform:translate(-50%,-50%); 
+} 
+.frame img.cover.active{ display:block; } 
+.frame img.spread{ 
+   display:none; 
+   width:92%; 
+   aspect-ratio:1.45; 
+   height:auto; 
+   object-fit:contain; 
+   position:absolute; 
+   top:50%; 
+   left:50%; 
+   transform:translate(-50%,-50%); 
+} 
+.frame img.spread.active{ display:block; }
+
 
 .slides {
   display: flex;
