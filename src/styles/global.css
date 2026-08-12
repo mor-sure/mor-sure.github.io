@@ -82,7 +82,7 @@ a {
 .site-line {
   display: block;
   font-size: var(--xs);
-  line-height: 1.4;
+  line-height: 1.2;
 }
 
 .site-name {
@@ -323,7 +323,7 @@ a {
 figcaption {
   margin-top: var(--space-1);
   font-size: var(--xs);
-  line-height: 1.35;
+  line-height: 1.2;
 }
 
 /* --- online pieces -------------------------------------------------------
@@ -409,10 +409,17 @@ figcaption {
   border-top: 1px solid #eaeaea;
 }
 
-.about p {
+/*.about p {
   margin: 0 0 var(--space-3);
   max-width: 68ch;
   line-height: 1.35;
+}*/
+
+.about p {
+  font-size: var(--xs);   /* ligne à ajouter — aligne sur la taille des légendes */
+  margin: 0 0 var(--space-3);
+  max-width: 68ch;
+  line-height: 1.2;
 }
 
 .about img {
