@@ -11,6 +11,6 @@ width_mm: 420
 height_mm: 594
 images:
   - src: ../../assets/works/outis_poster_launch_pral.jpg
-order: 60
+order: 44
 draft: false
 ---
