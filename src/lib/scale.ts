@@ -17,11 +17,12 @@ export const RATIO = 1.25;
 export const PAGE_WIDTH = 520;
 
 /**
- * Width : height of every project's frame. Fixed site-wide (see the brief) —
- * an A4 spread opened flat (420×300mm), so spreads (slide 2+) fill it edge to
- * edge instead of leaving letterbox slack on most works.
+ * Width : height of every project's frame. Fixed site-wide — A2 portrait
+ * (420×594mm), the largest format any cover or spread needs to fit inside.
+ * Covers render at their real proportional size; spreads render at a fixed
+ * size regardless of the cover.
  */
-export const FRAME_RATIO = 420 / 300;
+export const FRAME_RATIO = 420 / 594;
 
 /**
  * Pixels per millimetre for every cover, fixed and hand-tuned rather than
