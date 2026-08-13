@@ -53,8 +53,16 @@ class="site-line" target="_blank" rel="noopener">bandcamp</a>
       <slot />
     </main>
 <script>
-document.getElementById('bio-toggle').addEventListener('click', (e) => { e.stopPropagation(); 
-document.body.classList.toggle('bio-mode'); }); 
-document.addEventListener('click', (e) => { if (document.body.classList.contains('bio-mode') && !e.target.closest('#bio-toggle')) { document.body.classList.remove('bio-mode'); } }); 
+document.getElementById('bio-toggle')?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  document.body.classList.toggle('bio-mode');
+});
+
+document.addEventListener('click', (e) => {
+  if (document.body.classList.contains('bio-mode') && !(e.target as Element)?.closest('#bio-toggle')) {
+    document.body.classList.remove('bio-mode');
+  }
+});
+</script>
   </body>
 </html>
