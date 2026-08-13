@@ -417,7 +417,6 @@ figcaption {
    gets the same top divider the header gets at the bottom of the page. */
 .about {
   padding-top: var(--space-4);
-  border-top: 1px solid #eaeaea;
 }
 
 /*.about p {
