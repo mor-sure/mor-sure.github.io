@@ -212,9 +212,10 @@ a {
 /* Slide 2+ — spreads: fill the frame — its ratio matches an A4 spread — not
    based on any real size. object-fit still guards against a spread whose
    ratio doesn't quite match. */
+
 .slide:not([data-cover]) .art {
   object-fit: contain;
-  object-position: top;
+  object-position: center;
 }
 
 /* Hidden until the script claims the work, so the controls are never dead. */
@@ -306,6 +307,7 @@ a {
   gap: 6px;
   justify-content: center;
   margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
 }
 
 .dots button {
