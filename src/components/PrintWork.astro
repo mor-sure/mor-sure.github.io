@@ -39,6 +39,8 @@ const fullImages = await Promise.all(
 ---
 
 <figure class="work">
+  <span class="work-line" set:html={`<b>${title}.</b> ${caption} <span class="chevron">▾</span>`} />
+
   <div
     class="frame"
     data-frame
@@ -97,8 +99,6 @@ const fullImages = await Promise.all(
   </div>
 
   {images.length > 1 && <div class="dots" data-dots />}
-
-<span class="work-line" set:html={`<b>${title}.</b> ${caption} <span class="chevron">▾</span>`} />
 </figure>
 
 <script>
