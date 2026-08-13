@@ -115,12 +115,15 @@ a {
    transform:rotate(180deg); 
 }
 
-.frame { 
-   width: 100%; 
-   aspect-ratio: 420 / 594; 
-   position: relative; 
-   background: #fff; 
-   overflow: hidden; 
+.frame {
+  width: 100%;
+  aspect-ratio: var(--frame-ratio);
+  position: relative;
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 .frame img.cover{ 
    display:none; 
