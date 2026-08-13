@@ -39,16 +39,22 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
   </head>
   <body style={`--column: ${PAGE_WIDTH}px; --frame-ratio: ${FRAME_RATIO}`}>
 
-<header class="site-header column">
-  <span class="site-name">{site.name}</span>
-  <a href="#bio" class="site-line">bio</a>
-  <a href={`mailto:${site.email}`} class="site-line">{site.email}</a>
-  <a href={site.instagram_url} class="site-line" target="_blank" rel="noopener">{site.instagram}</a>
-  <a href={site.bandcamp_url} class="site-line" target="_blank" rel="noopener">bandcamp</a>
+<header class="site-header column"> 
+<span class="site-name" id="bio-toggle">{site.name}</span> 
+<a href={`mailto:${site.email}`} 
+class="site-line">{site.email}</a> 
+<a href={site.instagram_url} 
+class="site-line" target="_blank" rel="noopener">{site.instagram}</a> 
+<a href={site.bandcamp_url} 
+class="site-line" target="_blank" rel="noopener">bandcamp</a> 
 </header>
 
     <main class="column">
       <slot />
     </main>
+<script>
+document.getElementById('bio-toggle').addEventListener('click', (e) => { e.stopPropagation(); 
+document.body.classList.toggle('bio-mode'); }); 
+document.addEventListener('click', (e) => { if (document.body.classList.contains('bio-mode') && !e.target.closest('#bio-toggle')) { document.body.classList.remove('bio-mode'); } }); 
   </body>
 </html>
