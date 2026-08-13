@@ -100,7 +100,7 @@ a {
 .work-line{ 
    display:block; 
    font-size:14px; 
-   line-height:1; 
+   line-height:1,2; 
    cursor:pointer; 
    padding:0; 
 } 
