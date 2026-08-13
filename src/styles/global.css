@@ -91,23 +91,6 @@ a {
    margin-top:0; 
 } 
 
-/*
-.site-name,
-.site-line {
-  display: block;
-  font-size: 14px;
-  line-height: 1.3;
-}
-.site-name {
-  color: #000;
-  text-decoration: none;
-}
-.site-line {
-  color: #2a4195;
-  text-decoration: none;
-  margin-top: 0;
-}*/
-
 /* --- works -------------------------------------------------------------- */
 
 .work{ 
@@ -133,20 +116,6 @@ a {
 .work.expanded .work-line .chevron{ 
    transform:rotate(180deg); 
 }
-
-/*
-.work {
-  margin: 0 0 calc(var(--space-5) * 2);
-}*/
-
-/*.frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: var(--frame-ratio);
-  overflow: hidden;
-  background: #fafafa;
-  cursor: pointer;
-}*/ 
 
 .frame { 
    width: 100%; 
