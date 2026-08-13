@@ -93,12 +93,10 @@ a {
 
 /* --- works -------------------------------------------------------------- */
 
-.work{ 
-   margin:0; 
-} 
-.work + .work{ 
-   margin-top:14px; 
-} 
+.work {
+  margin: 0 0 14px;
+}
+
 .work-line{ 
    display:block; 
    font-size:14px; 
@@ -213,6 +211,7 @@ a {
    ratio doesn't quite match. */
 .slide:not([data-cover]) .art {
   object-fit: contain;
+  object-position: top;
 }
 
 /* Hidden until the script claims the work, so the controls are never dead. */
