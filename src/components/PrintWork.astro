@@ -161,14 +161,7 @@ const fullImages = await Promise.all(
     const frame = work.querySelector<HTMLElement>('[data-frame]');
     if (!slidesEl || !frame) return;
 
-    const slides = [...slidesEl.children] as HTMLElement[];
-    const total = slides.length;
-document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
-    const slidesEl = work.querySelector<HTMLElement>('[data-slides]');
-    const frame = work.querySelector<HTMLElement>('[data-frame]');
-    if (!slidesEl || !frame) return;
-
-    const slides = [...slidesEl.children] as HTMLElement[];
+ const slides = [...slidesEl.children] as HTMLElement[];
     const total = slides.length;
 
     work.querySelector('.work-line')?.addEventListener('click', () => work.classList.toggle('expanded'));
@@ -176,10 +169,8 @@ document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
     // Reveals the arrows: without JS they would render but do nothing.
     work.dataset.ready = '';
 
-    // Reveals the arrows: without JS they would render but do nothing.
-    work.dataset.ready = '';
-
     const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 
     // A clone of slide 0, appended after the real last slide, so stepping
     // "next" off the end scrolls one more slide-width forward — like the
