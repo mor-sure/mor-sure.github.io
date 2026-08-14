@@ -103,13 +103,15 @@ a {
    cursor:pointer; 
    padding:0; 
    }
+.work-line:hover {
+  color: #2a4195;
+}
 .work-date {
   display: inline-block;
   width: 70px;
-  color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 13px;
-  font-weight: 300 !important;
+  font-weight: 300;
 }
 .work-title {
   font-weight: normal;
@@ -120,13 +122,6 @@ a {
 
 .work.expanded .caption-full {
   display: inline;
-}
-.work-line .chevron{ 
-   display:inline-block; 
-   transition:transform .15s ease; 
-} 
-.work.expanded .work-line .chevron{ 
-   transform:rotate(180deg); 
 }
 
 .caption-full {
