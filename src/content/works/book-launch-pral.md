@@ -1,6 +1,7 @@
 ---
 type: print
 title: "BOOK LAUNCH PRAL "
+date: '2025-06'
 caption: "06.2025. WIP Magazine, Issue 11: Material World. Contributions include
   \"Hardcore Until the End\", the story of DJ Mehdi's Espionnage era, built from
   interviews with Charlotte Dutoit, Feadz, Olivier Rosset, and Alexander Wise.
