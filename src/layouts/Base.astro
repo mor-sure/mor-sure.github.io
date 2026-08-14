@@ -21,14 +21,12 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
 
 <!doctype html>
 <html lang="en">
-  <head>
+ <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -36,6 +34,8 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
     <meta property="og:site_name" content={site.name} />
     {previewUrl && <meta property="og:image" content={previewUrl} />}
     <meta name="twitter:card" content={previewUrl ? 'summary_large_image' : 'summary'} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
   <body style={`--column: ${PAGE_WIDTH}px; --frame-ratio: ${FRAME_RATIO}`}>
 
