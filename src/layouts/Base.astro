@@ -47,7 +47,6 @@ class="site-line">{site.email}</a>
 class="site-line" target="_blank" rel="noopener">{site.instagram}</a> 
 <a href={site.bandcamp_url} 
 class="site-line" target="_blank" rel="noopener">bandcamp</a> 
-<a href="#" class="site-line" id="toggle-all">Tout déplier</a>
 </header>
 
     <main class="column">
@@ -63,14 +62,6 @@ document.addEventListener('click', (e) => {
   if (document.body.classList.contains('bio-mode') && !(e.target as Element)?.closest('#bio-toggle')) {
     document.body.classList.remove('bio-mode');
   }
-});
-const toggleAllBtn = document.getElementById('toggle-all');
-toggleAllBtn?.addEventListener('click', (e) => {
-  e.preventDefault();
-  const works = document.querySelectorAll('.work');
-  const anyCollapsed = [...works].some((w) => !w.classList.contains('expanded'));
-  works.forEach((w) => w.classList.toggle('expanded', anyCollapsed));
-  toggleAllBtn.textContent = anyCollapsed ? 'Tout replier' : 'Tout déplier';
 });
 </script>
   </body>
