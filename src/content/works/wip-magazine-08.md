@@ -1,6 +1,7 @@
 ---
 type: print
 title: WIP Magazine 08
+date: '2023-07'
 caption: "<b>05.2023. WIP Magazine 08: Heavy Industry</b>. Contributed the
   article <i>Machine Learning</i>, a history of techno through a Black
   perspective, based on an interview with DeForrest Brown Jr. Also featured: an
