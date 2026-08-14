@@ -86,6 +86,10 @@ a {
    text-decoration:none; 
    cursor:pointer;
 } 
+.site-name:hover,
+.site-line:hover {
+  color: #2a4195;
+}
 .site-line { 
    margin-top:0; 
 } 
@@ -95,7 +99,8 @@ a {
 .toggle-all {
   display: block;
   margin-bottom: var(--space-2);
-  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 11px;
   color: var(--ink);
   text-decoration: none;
   cursor: pointer;
@@ -482,6 +487,10 @@ body.bio-mode .about {
   margin-top: var(--space-3);
 }
 body.bio-mode .work {
+  display: none;
+}
+
+body.bio-mode .toggle-all {
   display: none;
 }
 
