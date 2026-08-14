@@ -30,7 +30,8 @@ const photo = entry ? (await entry()).default : undefined;
 ---
 
 <Base image={preview}>
-  {works.map((work, i) => <Work work={work} eager={i === 0} />)}
+ <a href="#" id="toggle-all" class="toggle-all">Expand / Collapse All</a>
+{works.map((work, i) => <Work work={work} eager={i === 0} />)}
 
   <section class="about" id="bio">
     {
@@ -49,4 +50,14 @@ const photo = entry ? (await entry()).default : undefined;
     {site.photo_credit && <p class="about-credit">{site.photo_credit}</p>}
     {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </section>
+<script>
+  const toggleAllBtn = document.getElementById('toggle-all');
+  toggleAllBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const works = document.querySelectorAll('.work');
+    const anyCollapsed = [...works].some((w) => !w.classList.contains('expanded'));
+    works.forEach((w) => w.classList.toggle('expanded', anyCollapsed));
+    toggleAllBtn.textContent = anyCollapsed ? 'Collapse All' : 'Expand All';
+  });
+</script>
 </Base>
