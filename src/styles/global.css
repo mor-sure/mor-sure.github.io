@@ -46,7 +46,7 @@
 
 body {
   margin: 0;
-  padding: 1.5rem 0 6rem;
+  padding: 1.5rem 0 0;
   background: var(--bg);
   color: var(--ink);
   font-family: 'Kormelink', 'STIX Two Text', serif;
@@ -522,6 +522,7 @@ body.bio-mode .toggle-all {
 }
 footer {
   margin-top: auto;
+  padding-bottom: 1.5rem;
 }
 /* --- copyright page --------------------------------------------------------------- */
 
