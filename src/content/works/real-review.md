@@ -1,7 +1,7 @@
 ---
 type: print
 title: Real Review 13
-date: '2023-08'
+date: '2022-11'
 caption: "<b>11.2022. Real Review 13: Mining the Past.</b> Contributed the essay
   <i>Black Dasein</i>, which develops a theoretical framework for Black
   existence through the creation of poetic objects."
