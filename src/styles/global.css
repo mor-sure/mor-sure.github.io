@@ -93,20 +93,26 @@ a {
 
 /* --- works -------------------------------------------------------------- */
 
-.work {
-  margin: 0 0 14px;
-}
-
 .work-line{ 
    display:block; 
    font-size:14px; 
-   line-height:1,2; 
+   line-height:1.15; 
    cursor:pointer; 
    padding:0; 
 } 
-.work-line b{ 
-   font-weight:bold; 
-} 
+.work-date {
+  color: #8a8a8a;
+}
+.work-title {
+  font-weight: normal;
+}
+.work.expanded .work-title {
+  font-weight: bold;
+}
+
+.work.expanded .caption-full {
+  display: inline;
+}
 .work-line .chevron{ 
    display:inline-block; 
    transition:transform .15s ease; 
