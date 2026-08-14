@@ -50,6 +50,16 @@ collections:
           can't hide the other type's fields, but Astro validates them at
           build time.
       - { name: title, label: Title, widget: string }
+      - name: date
+        label: Date
+        widget: date
+        format: 'YYYY-MM'
+        date_format: 'YYYY/MM'
+        hint: Utilisée pour trier les projets (plus récent en premier) et affichée devant le titre.
+      - name: caption
+        label: Caption
+        widget: text
+        hint: Shown under the box. Title, then a sentence or two.
       - name: caption
         label: Caption
         widget: text
