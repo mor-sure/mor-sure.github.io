@@ -1,6 +1,7 @@
 ---
 type: print
 title: Love Injection 70
+date: '2023-11'
 caption: <b>05.2024. Love Injection 70.</b> Contributed the article <i>Dweller
   Forever</i>, a review of the Dweller festival 2024 edition.
 width_mm: 205
