@@ -52,9 +52,10 @@ collections:
       - { name: title, label: Title, widget: string }
       - name: date
         label: Date
-        widget: date
+        widget: datetime
         format: 'YYYY-MM'
-        date_format: 'YYYY/MM'
+        date_format: 'YYYY-MM'
+        time_format: false
         hint: Utilisée pour trier les projets (plus récent en premier) et affichée devant le titre.
       - name: caption
         label: Caption
