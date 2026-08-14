@@ -30,7 +30,7 @@ const photo = entry ? (await entry()).default : undefined;
 ---
 
 <Base image={preview}>
- <a href="#" id="toggle-all" class="toggle-all">Expand / Collapse All</a>
+<a href="#" id="toggle-all" class="toggle-all">Expand All</a>
 {works.map((work, i) => <Work work={work} eager={i === 0} />)}
 
   <section class="about" id="bio">
