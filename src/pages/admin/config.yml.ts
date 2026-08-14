@@ -60,10 +60,6 @@ collections:
         label: Caption
         widget: text
         hint: Shown under the box. Title, then a sentence or two.
-      - name: caption
-        label: Caption
-        widget: text
-        hint: Shown under the box. Title, then a sentence or two.
       - name: width_mm
         label: 'Print only — cover width (mm)'
         widget: number
