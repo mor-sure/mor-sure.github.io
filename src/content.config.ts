@@ -13,6 +13,9 @@ const works = defineCollection({
       z.object({
         type: z.literal('print'),
         title: z.string(),
+        // 'YYYY-MM' from Decap's date widget — sorted as a string, which
+        // works fine for this fixed-width, zero-padded format.
+        date: z.string(),
         caption: z.string(),
         // Real size of the cover (slide 1), in millimetres — sets its aspect
         // ratio inside the frame. Spreads (slide 2+) scale to fit the frame
@@ -34,6 +37,7 @@ const works = defineCollection({
       z.object({
         type: z.literal('online'),
         title: z.string(),
+        date: z.string(),
         caption: z.string(),
         // Where the "Online" tag links out to.
         url: z.string().url(),
