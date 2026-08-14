@@ -50,6 +50,11 @@ const photo = entry ? (await entry()).default : undefined;
     {site.photo_credit && <p class="about-credit">{site.photo_credit}</p>}
     {paragraphs.map((paragraph) => <p set:html={paragraph} />)}
   </section>
+<section class="copyright-page" id="copyright">
+  <p>© 2026 Martin Sigler. All rights reserved.</p>
+  <p>All content on this site — including text, photography, layout, and design — is the property of Martin Sigler unless otherwise credited. Where a contributor is named (photography, artwork, etc.), rights remain with that contributor.</p>
+  <p>No part of this site may be reproduced, distributed, or used in any form without prior written permission from the relevant rights holder.</p>
+</section>
 <script>
   const toggleAllBtn = document.getElementById('toggle-all');
   toggleAllBtn?.addEventListener('click', (e) => {
