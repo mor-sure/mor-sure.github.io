@@ -1,13 +1,13 @@
 ---
 type: print
-title: WIP Magazine Issue 11
-date: '2025-06'
-caption: "06.2025. WIP Magazine, Issue 11: Material World. Contributions include
-  \"Hardcore Until the End\", the story of DJ Mehdi's Espionnage era, built from
-  interviews with Charlotte Dutoit, Feadz, Olivier Rosset, and Alexander Wise.
-  It has been published around the release of Thibaut de Longeville's
-  documentary \"DJ Mehdi: Made in France\". Elsewhere, interviews feature
-  Implaccable, Paola Buendia, and Laurent Segretier."
+title: "WIP Magazine 11: Material World"
+date: 2025-06
+caption: "Contributions include <i>Hardcore Until the End<i/>, the story of DJ
+  Mehdi's Espionnage era, built from interviews with Charlotte Dutoit, Feadz,
+  Olivier Rosset, and Alexander Wise. It has been published around the release
+  of Thibaut de Longeville's documentary <i>DJ Mehdi: Made in France</i>.
+  Elsewhere, interviews feature Implaccable, Paola Buendia, and Laurent
+  Segretier."
 width_mm: 210
 height_mm: 280
 images:
