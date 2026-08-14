@@ -89,7 +89,7 @@ a {
 } 
 .site-line { 
    display:block; 
-   font-size:14px; 
+   font-size:11px; 
    line-height:1.3; 
    color:#000; 
    text-decoration:none; 
@@ -519,7 +519,7 @@ body.bio-mode .copyright-page {
 /* --- footer --------------------------------------------------------------- */
 
 .footer-copyright {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--ink);
   text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
