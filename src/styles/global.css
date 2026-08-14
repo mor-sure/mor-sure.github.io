@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;1,400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 /* Licensed for web use, but the file never enters the repo — see .gitignore
    and .github/workflows/deploy.yml. 404s harmlessly in dev/on forks without
    the deploy secret, falling through to STIX Two Text below. */
@@ -105,8 +105,11 @@ a {
    padding:0; 
    }
 .work-date {
+  display: inline-block;
+  width: 70px;
   color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 14px;
 }
 .work-title {
   font-weight: normal;
