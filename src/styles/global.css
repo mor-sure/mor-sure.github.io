@@ -519,7 +519,7 @@ body.bio-mode .copyright-page {
 /* --- footer --------------------------------------------------------------- */
 
 .footer-copyright {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--ink);
   text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
