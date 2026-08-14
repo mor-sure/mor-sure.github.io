@@ -56,16 +56,28 @@ class="site-line" target="_blank" rel="noopener">bandcamp</a>
 document.getElementById('bio-toggle')?.addEventListener('click', (e) => {
   e.stopPropagation();
   document.body.classList.toggle('bio-mode');
+  document.body.classList.remove('copyright-mode');
+});
+
+document.getElementById('copyright-toggle')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  document.body.classList.toggle('copyright-mode');
+  document.body.classList.remove('bio-mode');
 });
 
 document.addEventListener('click', (e) => {
-  if (document.body.classList.contains('bio-mode') && !(e.target as Element)?.closest('#bio-toggle')) {
+  const target = e.target as Element;
+  if (document.body.classList.contains('bio-mode') && !target?.closest('#bio-toggle')) {
     document.body.classList.remove('bio-mode');
+  }
+  if (document.body.classList.contains('copyright-mode') && !target?.closest('#copyright-toggle')) {
+    document.body.classList.remove('copyright-mode');
   }
 });
 </script>
 <footer style="text-align: center; padding: var(--space-4) 0;">
-  <a href="/copyright" class="footer-copyright">© 2026</a>
+  <a href="#" id="copyright-toggle" class="footer-copyright">© 2026</a>
 </footer>
   </body>
 </html>
