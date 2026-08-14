@@ -115,6 +115,16 @@ a {
    transform:rotate(180deg); 
 }
 
+.caption-full {
+  display: none;
+}
+.work.expanded .caption-full {
+  display: inline;
+}
+.work.expanded .caption-preview {
+  display: none;
+}
+
 .frame {
   width: 100%;
   aspect-ratio: var(--frame-ratio);
