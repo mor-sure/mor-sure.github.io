@@ -95,6 +95,7 @@ a {
    text-decoration:none; 
    cursor:pointer;
    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   font-weight: 300 !important;
 }
 .site-name:hover,
 .site-line:hover {
