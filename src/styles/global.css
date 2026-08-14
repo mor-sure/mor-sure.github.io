@@ -53,6 +53,9 @@ body {
   font-weight: 400;
   font-size: var(--sm);
   line-height: 1.2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -517,7 +520,9 @@ body.bio-mode .toggle-all {
 .footer-copyright:hover {
   color: #2a4195;
 }
-
+footer {
+  margin-top: auto;
+}
 /* --- copyright page --------------------------------------------------------------- */
 
 .copyright-page {
