@@ -90,9 +90,13 @@ a {
 .site-line:hover {
   color: #2a4195;
 }
+.site-name {
+  font-size: 16px;
+  margin-bottom: calc(var(--space-2) * 2);
+}
 .site-line { 
    margin-top:0; 
-} 
+}
 
 /* --- works -------------------------------------------------------------- */
 
