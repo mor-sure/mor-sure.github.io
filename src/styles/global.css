@@ -481,9 +481,10 @@ figcaption {
   margin-bottom: var(--space-1);
 }
 
-.about-credit {
-  font-size: 4px;
+.about p.about-credit {
+  font-size: 7px;
   color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .about {
