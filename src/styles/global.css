@@ -108,8 +108,8 @@ a {
   width: 70px;
   color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 300 !important;
 }
 .work-title {
   font-weight: normal;
