@@ -1,6 +1,7 @@
 ---
 type: print
 title: MANIFESTO
+date: '2023-10'
 caption: <b>06.2024. MANIFESTO.</b> Contributed the interview with Liv.e,
   published online <a
   href="https://www.goat.com/en-de/editorial/liv-e-olivia-williams-music-artist-interview"
