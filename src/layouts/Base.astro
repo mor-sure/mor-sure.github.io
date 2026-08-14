@@ -55,17 +55,18 @@ class="site-line" target="_blank" rel="noopener">bandcamp</a>
 <script>
 document.getElementById('bio-toggle')?.addEventListener('click', (e) => {
   e.stopPropagation();
-  document.body.classList.toggle('bio-mode');
-  document.body.classList.remove('copyright-mode');
+  if (document.body.classList.contains('copyright-mode')) {
+    document.body.classList.remove('copyright-mode');
+  } else {
+    document.body.classList.toggle('bio-mode');
+  }
 });
-
 document.getElementById('copyright-toggle')?.addEventListener('click', (e) => {
   e.preventDefault();
   e.stopPropagation();
   document.body.classList.toggle('copyright-mode');
   document.body.classList.remove('bio-mode');
 });
-
 document.addEventListener('click', (e) => {
   const target = e.target as Element;
   if (document.body.classList.contains('bio-mode') && !target?.closest('#bio-toggle')) {
