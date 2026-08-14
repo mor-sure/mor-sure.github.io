@@ -91,8 +91,8 @@ a {
   color: #2a4195;
 }
 .site-name {
-  font-size: 16px;
-  margin-bottom: calc(var(--space-2) * 2);
+  font-size: 15px;
+  margin-bottom: calc(var(--space-2) * 1.5);
 }
 .site-line { 
    margin-top:0; 
