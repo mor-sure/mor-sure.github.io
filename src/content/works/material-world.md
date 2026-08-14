@@ -2,7 +2,7 @@
 type: print
 title: "WIP Magazine 11: Material World"
 date: 2025-06
-caption: "Contributions include <i>Hardcore Until the End<i/>, the story of DJ
+caption: "Contributions include <i>Hardcore Until the End</i>, the story of DJ
   Mehdi's Espionnage era, built from interviews with Charlotte Dutoit, Feadz,
   Olivier Rosset, and Alexander Wise. It has been published around the release
   of Thibaut de Longeville's documentary <i>DJ Mehdi: Made in France</i>.
