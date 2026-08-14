@@ -19,7 +19,7 @@ interface Props {
 const { work, eager = false } = Astro.props;
 const { title, caption, images, width_mm, height_mm } = work.data;
 
-const PREVIEW_LENGTH = 100;
+const PREVIEW_LENGTH = 220;
 // Les balises sont retirées pour l'aperçu tronqué (texte brut, jamais coupé
 // en plein milieu d'un <i> ou autre) — la légende complète, elle, garde son
 // HTML intact une fois dépliée.
