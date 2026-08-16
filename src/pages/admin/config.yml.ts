@@ -38,17 +38,18 @@ collections:
     sortable_fields: [order, title]
     summary: '{{order}} — {{title}}'
     fields:
-      - name: type
+    - name: type
         label: Type
         widget: select
-        options: [print, online]
+        options: [print, online, event, record]
         default: print
         hint: >-
-          Print = a scanned object, shown in a frame'd carousel at its real
-          proportions. Online = a link-out card for a web piece, no frame.
-          Only fill in the fields below that match the type you pick — Decap
-          can't hide the other type's fields, but Astro validates them at
-          build time.
+          Print = a scanned object at its real proportions. Online = a
+          title-link, nothing else shown. Event = a real-size cover followed
+          by a swipeable set of photos, each shown uncropped at its own
+          shape. Record = two images (front/back) shown one at a time, both
+          at real proportions. Only fill in the fields below that match the
+          type you pick.
       - { name: title, label: Title, widget: string }
       - name: date
         label: Date
@@ -57,30 +58,34 @@ collections:
         date_format: 'YYYY-MM'
         time_format: false
         hint: Utilisée pour trier les projets (plus récent en premier) et affichée devant le titre.
-      - name: caption
+     - name: caption
         label: Caption
         widget: text
-        hint: Shown under the box. Title, then a sentence or two.
+        required: false
+        hint: 'Print/Event/Record: shown under the title. Online: unused for display.'
       - name: width_mm
-        label: 'Print only — cover width (mm)'
+        label: 'Print/Event/Record only — cover width (mm)'
         widget: number
         value_type: int
         min: 1
         required: false
-        hint: Real width of the cover (first image). Sets its proportions inside the frame.
+        hint: Real width of the cover/sleeve. Sets its proportions inside the frame.
       - name: height_mm
-        label: 'Print only — cover height (mm)'
+        label: 'Print/Event/Record only — cover height (mm)'
         widget: number
         value_type: int
         min: 1
         required: false
-      - name: images
-        label: 'Print only — images'
+     - name: images
+        label: 'Print/Event/Record only — images'
         label_singular: Image
         widget: list
         required: false
         summary: '{{fields.src}}'
-        hint: First image is the cover, shown at its real proportions. The rest are spreads, scaled to fit the frame.
+        hint: >-
+          Print: first image is the cover (real size), rest are spreads.
+          Event: first image is the cover (real size), rest are photos shown
+          uncropped. Record: exactly 2 images (front/back), both real size.
         fields:
           - { name: src, label: Scan, widget: image }
           - { name: alt, label: Alt text, widget: string, required: false }
@@ -89,11 +94,11 @@ collections:
         widget: string
         required: false
         hint: Where the "Online" tag links out to.
-      - name: image
+    - name: image
         label: 'Online only — hero image'
         widget: image
         required: false
-        hint: Cropped to a 16:9 screen ratio, not a paper one.
+        hint: Optional — used only for social-preview cards, not shown on the site.
       - name: alt
         label: 'Online only — hero alt text'
         widget: string
