@@ -14,6 +14,9 @@ width_mm: 415
 height_mm: 589
 images:
   - src: ../../assets/works/outis_poster_launch_pral.jpg
+  - src: ../../assets/works/2.jpg
+  - src: ../../assets/works/3.jpg
+  - src: ../../assets/works/dsc05550.jpg
 order: 0
 draft: false
 ---
