@@ -34,24 +34,25 @@ const works = defineCollection({
         order: z.number().default(0),
         draft: z.boolean().default(false),
       }),
+    z.object({
+  type: z.literal('event'),
+  title: z.string(),
+  date: z.string(),
+  caption: z.string(),
+  width_mm: z.number(),
+  height_mm: z.number(),
+  event_images: z
+    .array(
       z.object({
-        type: z.literal('event'),
-        title: z.string(),
-        date: z.string(),
-        caption: z.string(),
-        width_mm: z.number(),
-        height_mm: z.number(),
-        images: z
-          .array(
-            z.object({
-              src: image(),
-              alt: z.string().optional(),
-            })
-          )
-          .min(1),
-        order: z.number().default(0),
-        draft: z.boolean().default(false),
-      }),
+        src: image(),
+        alt: z.string().optional(),
+        credit: z.string().optional(),
+      })
+    )
+    .min(1),
+  order: z.number().default(0),
+  draft: z.boolean().default(false),
+}),
       z.object({
         type: z.literal('record'),
         title: z.string(),
