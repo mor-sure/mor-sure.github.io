@@ -48,7 +48,7 @@ const fullImages = await Promise.all(
 );
 ---
 
-<figure class="work">
+<figure class="work work-print">
  <span class="work-line">
 <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
   <span class="work-title" set:html={` ${title}.`} />
@@ -170,7 +170,7 @@ const fullImages = await Promise.all(
     box.classList.add('active');
   }
 
-  document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
+document.querySelectorAll<HTMLElement>('.work-print').forEach((work) => {
     const slidesEl = work.querySelector<HTMLElement>('[data-slides]');
     const frame = work.querySelector<HTMLElement>('[data-frame]');
     if (!slidesEl || !frame) return;
