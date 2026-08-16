@@ -3,8 +3,8 @@ type: print
 title: KALEIDOSCOPE 41
 date: 2023-01
 caption: "Contributed the article <i>Air Afrique: A Lost Imagination</i>, based
-  on interviews with Djiby Kebe, Jérémy Konko, Zhedy Nuentsa and Ahmadou-Bamba
-  Thiam."
+  on interviews with founders Djiby Kebe, Jérémy Konko, Zhedy Nuentsa and
+  Ahmadou-Bamba Thiam."
 width_mm: 230
 height_mm: 300
 images:
