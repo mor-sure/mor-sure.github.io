@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { work, eager = false } = Astro.props;
-const { title, date, caption, images, width_mm, height_mm } = work.data;
+const { title, date, caption, event_images: images, width_mm, height_mm } = work.data;
 
 const frameHeightPx = PAGE_WIDTH / FRAME_RATIO;
 const coverWidthPx = Math.round(width_mm * MM_SCALE);
