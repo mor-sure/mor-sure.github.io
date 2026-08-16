@@ -554,3 +554,9 @@ body.copyright-mode .about {
   line-height: 1.4;
   margin: 0;
 }
+.work-line {
+  text-decoration: none;
+}
+.frame {
+  transition: aspect-ratio 0.2s ease;
+}

@@ -2,23 +2,21 @@
 import type { CollectionEntry } from 'astro:content';
 import PrintWork, { type PrintWorkEntry } from './PrintWork.astro';
 import WebWork, { type OnlineWorkEntry } from './WebWork.astro';
-
+import EventWork, { type EventWorkEntry } from './EventWork.astro';
+import RecordWork, { type RecordWorkEntry } from './RecordWork.astro';
 interface Props {
   work: CollectionEntry<'works'>;
-  /** Set on the first work only: its opening image is the LCP image. */
   eager?: boolean;
 }
-
 const { work, eager = false } = Astro.props;
-const isOnline = work.data.type === 'online';
 ---
-
 {
-  // TS doesn't propagate the `work.data.type` narrowing above to `work`
-  // itself once it crosses a JSX prop boundary — these casts are exactly as
-  // safe as the runtime check on the line above, no more.
-  isOnline ? (
-    <WebWork work={work as OnlineWorkEntry} eager={eager} />
+  work.data.type === 'online' ? (
+    <WebWork work={work as OnlineWorkEntry} />
+  ) : work.data.type === 'event' ? (
+    <EventWork work={work as EventWorkEntry} eager={eager} />
+  ) : work.data.type === 'record' ? (
+    <RecordWork work={work as RecordWorkEntry} eager={eager} />
   ) : (
     <PrintWork work={work as PrintWorkEntry} eager={eager} />
   )

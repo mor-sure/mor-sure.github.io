@@ -1,0 +1,241 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { PAGE_WIDTH, FRAME_RATIO, MM_SCALE } from '../lib/scale';
+
+type Work = CollectionEntry<'works'>;
+export type EventWorkEntry = Omit<Work, 'data'> & { data: Extract<Work['data'], { type: 'event' }> };
+
+interface Props {
+  work: EventWorkEntry;
+  eager?: boolean;
+}
+
+const { work, eager = false } = Astro.props;
+const { title, date, caption, images, width_mm, height_mm } = work.data;
+
+const frameHeightPx = PAGE_WIDTH / FRAME_RATIO;
+const coverWidthPx = Math.round(width_mm * MM_SCALE);
+const coverHeightPx = Math.round(height_mm * MM_SCALE);
+const coverWidthPct = (coverWidthPx / PAGE_WIDTH) * 100;
+const coverHeightPct = (coverHeightPx / frameHeightPx) * 100;
+
+const fullImages = await Promise.all(
+  images.map((slide) => getImage({ src: slide.src, width: 1800, format: 'webp', quality: 85 }))
+);
+---
+
+<figure class="work work-event">
+  <span class="work-line">
+    <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
+    <span class="work-title" set:html={` ${title}.`} />
+    <span class="caption-full" set:html={` ${caption}`} />
+  </span>
+
+  <div
+    class="frame"
+    data-frame
+    style={`--cover-w: ${coverWidthPct}%; --cover-h: ${coverHeightPct}%`}
+  >
+    <div class="slides" data-slides>
+      {
+        images.map((slide, i) =>
+          i === 0 ? (
+            <div class="slide" data-cover data-full={fullImages[i].src}>
+              <Picture
+                src={slide.src}
+                formats={['avif', 'webp']}
+                fallbackFormat="jpeg"
+                width={coverWidthPx}
+                height={coverHeightPx}
+                densities={[1, 2]}
+                class="art"
+                alt={slide.alt ?? title}
+                loading={eager ? 'eager' : 'lazy'}
+                fetchpriority={eager ? 'high' : undefined}
+              />
+            </div>
+          ) : (
+            <div
+              class="slide"
+              data-full={fullImages[i].src}
+              data-ratio={(slide.src.width / slide.src.height).toFixed(4)}
+            >
+              <Picture
+                src={slide.src}
+                formats={['avif', 'webp']}
+                fallbackFormat="jpeg"
+                width={PAGE_WIDTH}
+                height={Math.round(PAGE_WIDTH * (slide.src.height / slide.src.width))}
+                densities={[1, 2]}
+                class="art"
+                alt={slide.alt ?? title}
+                loading="lazy"
+              />
+            </div>
+          )
+        )
+      }
+    </div>
+
+    {
+      images.length > 1 && (
+        <>
+          <button class="nav prev" data-prev aria-label={`${title}: previous image`}>
+            ‹
+          </button>
+          <button class="nav next" data-next aria-label={`${title}: next image`}>
+            ›
+          </button>
+        </>
+      )
+    }
+    <button class="expand" data-expand aria-label={`${title}: expand image`}>⤢</button>
+  </div>
+
+  {images.length > 1 && <div class="dots" data-dots />}
+</figure>
+
+<script>
+  let activeStep: ((direction: 1 | -1) => void) | null = null;
+
+  function getLightbox() {
+    let box = document.getElementById('lightbox');
+    if (box) return box;
+
+    box = document.createElement('div');
+    box.id = 'lightbox';
+    box.className = 'lightbox';
+    box.innerHTML = `<button class="lightbox-close" aria-label="Close">×</button><img class="lightbox-img" alt="">`;
+    document.body.append(box);
+
+    box.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.lightbox-close')) {
+        closeLightbox();
+        return;
+      }
+      activeStep?.(1);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') activeStep?.(1);
+      if (e.key === 'ArrowLeft') activeStep?.(-1);
+    });
+
+    return box;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox')?.classList.remove('active');
+    activeStep = null;
+  }
+
+  function openLightbox(getActiveSlide: () => HTMLElement | undefined, step: (direction: 1 | -1) => void) {
+    const box = getLightbox();
+    const img = box.querySelector<HTMLImageElement>('.lightbox-img')!;
+
+    const render = () => {
+      const slide = getActiveSlide();
+      const full = slide?.dataset.full;
+      const inline = slide?.querySelector('img');
+      if (!full && !inline) return;
+      img.src = full || inline!.currentSrc || inline!.src;
+      img.alt = inline?.alt ?? '';
+    };
+
+    activeStep = (direction) => {
+      step(direction);
+      render();
+    };
+    render();
+    box.classList.add('active');
+  }
+
+  document.querySelectorAll<HTMLElement>('.work-event').forEach((work) => {
+    const slidesEl = work.querySelector<HTMLElement>('[data-slides]');
+    const frame = work.querySelector<HTMLElement>('[data-frame]');
+    if (!slidesEl || !frame) return;
+
+    const slides = [...slidesEl.children] as HTMLElement[];
+    const total = slides.length;
+
+    work.querySelector('.work-line')?.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) return;
+      work.classList.toggle('expanded');
+    });
+
+    work.dataset.ready = '';
+
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let hasClone = false;
+    if (total > 1) {
+      slidesEl.append(slides[0].cloneNode(true));
+      hasClone = true;
+    }
+
+    const domIndex = () => Math.round(slidesEl.scrollLeft / slidesEl.clientWidth);
+    const current = () => domIndex() % total;
+
+    const syncFrameRatio = () => {
+      const i = current();
+      const ratio = slides[i]?.dataset.ratio;
+      frame.style.aspectRatio = i === 0 || !ratio ? '' : ratio;
+    };
+
+    const goToIndex = (i: number) => {
+      const next = (i + total) % total;
+      slidesEl.scrollTo({ left: next * slidesEl.clientWidth, behavior: still.matches ? 'auto' : 'smooth' });
+    };
+
+    const step = (direction: 1 | -1) => {
+      const target = domIndex() + direction;
+      const wrapped = hasClone && direction < 0 && target < 0 ? total - 1 : target;
+      slidesEl.scrollTo({ left: wrapped * slidesEl.clientWidth, behavior: still.matches ? 'auto' : 'smooth' });
+    };
+
+    if (hasClone) {
+      slidesEl.addEventListener('scrollend', () => {
+        if (domIndex() === total) slidesEl.scrollLeft = 0;
+      });
+    }
+
+    const dotsWrap = work.querySelector<HTMLElement>('[data-dots]');
+    if (dotsWrap && total > 1) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToIndex(i));
+        dotsWrap.append(dot);
+      });
+      const dots = [...dotsWrap.children];
+      slidesEl.addEventListener('scroll', () => {
+        const i = current();
+        dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
+        syncFrameRatio();
+      });
+    } else {
+      slidesEl.addEventListener('scroll', syncFrameRatio);
+    }
+
+    work.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
+    work.querySelector('[data-next]')?.addEventListener('click', () => step(1));
+
+    frame.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.nav, .expand')) return;
+      if (total > 1) step(1);
+    });
+
+    work.querySelector('[data-expand]')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      let i = current();
+      openLightbox(
+        () => slides[i],
+        (direction) => {
+          i = (i + direction + total) % total;
+          goToIndex(i);
+        }
+      );
+    });
+  });
+</script>
