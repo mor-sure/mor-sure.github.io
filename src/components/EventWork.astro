@@ -55,7 +55,7 @@ const fullImages = await Promise.all(
                 fetchpriority={eager ? 'high' : undefined}
               />
             </div>
-          ) : (
+   ) : (
             <div
               class="slide"
               data-full={fullImages[i].src}
@@ -72,6 +72,7 @@ const fullImages = await Promise.all(
                 alt={slide.alt ?? title}
                 loading="lazy"
               />
+              {slide.credit && <p class="event-credit" set:html={slide.credit} />}
             </div>
           )
         )
