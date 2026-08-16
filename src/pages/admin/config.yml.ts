@@ -38,7 +38,7 @@ collections:
     sortable_fields: [order, title]
     summary: '{{order}} — {{title}}'
     fields:
-    - name: type
+      - name: type
         label: Type
         widget: select
         options: [print, online, event, record]
@@ -58,7 +58,7 @@ collections:
         date_format: 'YYYY-MM'
         time_format: false
         hint: Utilisée pour trier les projets (plus récent en premier) et affichée devant le titre.
-     - name: caption
+      - name: caption
         label: Caption
         widget: text
         required: false
@@ -76,7 +76,7 @@ collections:
         value_type: int
         min: 1
         required: false
-     - name: images
+      - name: images
         label: 'Print/Event/Record only — images'
         label_singular: Image
         widget: list
@@ -94,7 +94,7 @@ collections:
         widget: string
         required: false
         hint: Where the "Online" tag links out to.
-    - name: image
+      - name: image
         label: 'Online only — hero image'
         widget: image
         required: false
