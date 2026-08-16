@@ -178,7 +178,10 @@ const fullImages = await Promise.all(
  const slides = [...slidesEl.children] as HTMLElement[];
     const total = slides.length;
 
-    work.querySelector('.work-line')?.addEventListener('click', () => work.classList.toggle('expanded'));
+work.querySelector('.work-line')?.addEventListener('click', (e) => {
+  if ((e.target as HTMLElement).closest('a')) return;
+  work.classList.toggle('expanded');
+});
 
     // Reveals the arrows: without JS they would render but do nothing.
     work.dataset.ready = '';
