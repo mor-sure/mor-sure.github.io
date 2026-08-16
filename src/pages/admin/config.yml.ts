@@ -77,18 +77,28 @@ collections:
         min: 1
         required: false
       - name: images
-        label: 'Print/Event/Record only — images'
+        label: 'Print/Record only — images'
         label_singular: Image
         widget: list
         required: false
         summary: '{{fields.src}}'
         hint: >-
           Print: first image is the cover (real size), rest are spreads.
-          Event: first image is the cover (real size), rest are photos shown
-          uncropped. Record: exactly 2 images (front/back), both real size.
+          Record: exactly 2 images (front/back), both real size.
         fields:
           - { name: src, label: Scan, widget: image }
           - { name: alt, label: Alt text, widget: string, required: false }
+      - name: event_images
+        label: 'Event only — images'
+        label_singular: Photo
+        widget: list
+        required: false
+        summary: '{{fields.src}}'
+        hint: First image is the cover (real size). Add a credit per photo — it displays over that image.
+        fields:
+          - { name: src, label: Photo, widget: image }
+          - { name: alt, label: Alt text, widget: string, required: false }
+          - { name: credit, label: Credit, widget: string, required: false, hint: 'e.g. "Photo: Andrew White"' }
       - name: url
         label: 'Online only — link'
         widget: string
