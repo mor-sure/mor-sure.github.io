@@ -15,7 +15,13 @@ checkAspect(works);
 // The first work's opening image doubles as the social preview, whichever
 // shape that work is.
 const firstWork = works[0]?.data;
-const preview = firstWork && (firstWork.type === 'online' ? firstWork.image : firstWork.images[0]?.src);
+const preview =
+  firstWork &&
+  (firstWork.type === 'online'
+    ? firstWork.image
+    : firstWork.type === 'event'
+      ? firstWork.event_images[0]?.src
+      : firstWork.images[0]?.src);
 
 // site.about carries inline HTML (e.g. <i> for a book title) rendered as-is
 // below via set:html — it's Martin's own trusted content, not user input.
