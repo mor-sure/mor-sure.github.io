@@ -3,8 +3,9 @@ type: print
 title: "WIP Magazine 08: Heavy Industry"
 date: 2023-05
 caption: "Contributed the article <i>Machine Learning</i>, a history of techno
-  through a Black perspective, based on an interview with DeForrest Brown Jr.
-  Also featured: an intro to BlackMass Publishing."
+  through a Black perspective, based on an interview with writer, composer, and
+  theorist DeForrest Brown Jr., aka Speaker Music. Also featured: an intro to
+  publishing house BlackMass Publishing."
 width_mm: 210
 height_mm: 280
 images:
