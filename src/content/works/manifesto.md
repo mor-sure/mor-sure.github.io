@@ -1,6 +1,6 @@
 ---
 type: print
-title: Manifesto Festival
+title: MANIFESTO Festival
 date: 2024-06
 caption: Interviewed musician Liv.e, available to read <a
   href="https://www.goat.com/en-de/editorial/liv-e-olivia-williams-music-artist-interview"
