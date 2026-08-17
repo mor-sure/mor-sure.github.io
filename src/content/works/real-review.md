@@ -2,7 +2,7 @@
 type: print
 title: <i>Black Dasein</i>, Real Review 13
 date: 2022-11
-caption: Contributed an essay, which develops a theoretical framework for Black
+caption: Contributed an essay that develops a theoretical framework for Black
   existence through the creation of poetic objects.
 width_mm: 120
 height_mm: 260
