@@ -1,9 +1,8 @@
 ---
 type: print
-title: <i>Dweller Forever</i>, Love Injection 70
+title: <i>Dweller Forever</i>, Love Injection 070
 date: 2024-05
-caption: Contributed the article <i>Dweller Forever</i>, a review of the Dweller
-  festival 2024 edition.
+caption: Contributed a review of the New-York based festival Dweller.
 width_mm: 205
 height_mm: 280
 images:
