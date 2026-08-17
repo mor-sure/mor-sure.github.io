@@ -1,6 +1,6 @@
 ---
 type: print
-title: "WIP Magazine 11: Material World"
+title: "<i>Hardcore Until the End</i>, WIP Magazine 11: Material World"
 date: 2025-06
 caption: "Contributed the article <i>Hardcore Until the End</i>, the story of DJ
   Mehdi's Espionnage era, based on interviews with curator Charlotte Dutoit, DJ
