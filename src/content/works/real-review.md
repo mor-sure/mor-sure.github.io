@@ -1,9 +1,9 @@
 ---
 type: print
-title: "Real Review 13: Mining the Past"
+title: "<i>Black Dasein</i>, Real Review 13: Mining the Past"
 date: 2022-11
-caption: Contributed the essay <i>Black Dasein</i>, which develops a theoretical
-  framework for Black existence through the creation of poetic objects.
+caption: Contributed an essay which develops a theoretical framework for Black
+  existence through the creation of poetic objects.
 width_mm: 120
 height_mm: 260
 images:
