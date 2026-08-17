@@ -1,6 +1,6 @@
 ---
 type: print
-title: "<i>Precious</i>, WIP Magazine 09: Posthuman Futures"
+title: <i>Precious</i>, WIP Magazine 09
 date: 2023-11
 caption: Interviewed director Joaquim Bayle, following the premiere of the skate
   film <i>Precious</i>.
