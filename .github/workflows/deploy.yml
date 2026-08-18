@@ -45,13 +45,17 @@ jobs:
       # — so it never enters the repo (see .gitignore) and is decoded from a
       # secret straight into place here instead. Skips cleanly if the secret
       # isn't set, so forks/PRs still build without it.
-      - name: Add Kormelink font
+            - name: Add Kormelink font
         env:
           KORMELINK_WOFF2_BASE64: ${{ secrets.KORMELINK_WOFF2_BASE64 }}
+          KORMELINK_ITALIC_WOFF2_BASE64: ${{ secrets.KORMELINK_ITALIC_WOFF2_BASE64 }}
         run: |
+          mkdir -p public/fonts
           if [ -n "$KORMELINK_WOFF2_BASE64" ]; then
-            mkdir -p public/fonts
             echo "$KORMELINK_WOFF2_BASE64" | base64 -d > public/fonts/kormelink-roman.woff2
+          fi
+          if [ -n "$KORMELINK_ITALIC_WOFF2_BASE64" ]; then
+            echo "$KORMELINK_ITALIC_WOFF2_BASE64" | base64 -d > public/fonts/kormelink-italic.woff2
           fi
 
       - name: Build site
