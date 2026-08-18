@@ -260,9 +260,11 @@ a {
   height: var(--cover-h);
   transform: translate(-50%, -50%);
   /* Guards against a work whose real size, at MM_SCALE, would exceed the
-     frame — clamps rather than overflows it. */
-  max-width: 100%;
-  max-height: 100%;
+     frame — clamps rather than overflows it. 94% (rather than 100%) leaves
+     a visible margin even for a true-A2 poster, so its edges read against
+     the frame instead of touching it exactly. */
+  max-width: 94%;
+  max-height: 94%;
 }
 
 /* Slide 2+ — spreads: fill the frame — its ratio matches an A4 spread — not
