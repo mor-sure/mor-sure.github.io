@@ -156,9 +156,6 @@ a {
 .work-title {
   font-weight: normal;
 }
-.work.expanded .work-title {
-  font-weight: bold;
-}
 
 .work.expanded .caption-full {
   display: inline;
