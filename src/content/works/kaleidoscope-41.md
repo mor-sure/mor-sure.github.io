@@ -2,7 +2,7 @@
 type: print
 title: " <i>Air Afrique: A Lost Imagination</i>, KALEIDOSCOPE 41"
 date: 2023-01
-caption: Contributed an article based on interviews with 'Air Afrique' founders
+caption: Contributed an article based on interviews with Air Afrique founders
   Djiby Kebe, Jérémy Konko, Zhedy Nuentsa, and Ahmadou-Bamba Thiam.
 width_mm: 230
 height_mm: 300
