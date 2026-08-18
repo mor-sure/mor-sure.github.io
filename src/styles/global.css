@@ -359,6 +359,24 @@ a {
     transition: none;
   }
 }
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+  .work:not(.expanded) .work-line {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .work:not(.expanded) .work-title {
+    display: block;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
 
 .dots {
   display: flex;
