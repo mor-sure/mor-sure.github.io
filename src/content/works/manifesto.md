@@ -1,6 +1,6 @@
 ---
 type: online
-title: <i>Creating a 7-Song EP in 1 Night With Liv.e</i>, MANIFESTO 2024
+title: <i>Creating a 7-Song EP in 1 Night With Liv.e</i>, Manifesto 2024
 date: 2024-06
 caption: ""
 width_mm: ""
