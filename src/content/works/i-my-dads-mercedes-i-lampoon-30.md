@@ -2,6 +2,8 @@
 type: print
 title: <i>My Dad's Mercedes</i>, Lampoon 30
 date: 2024-11
+categories:
+  - magazines
 caption: "Interviewed contemporary artist Selma Selman. "
 width_mm: 242
 height_mm: 320
