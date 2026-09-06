@@ -491,7 +491,7 @@ figcaption {
 /* Now a section at the foot of the works page rather than its own page, so it
    gets the same top divider the header gets at the bottom of the page. */
 .about {
-  padding-top: var(--space-4);
+  padding-top: 0;
 }
 
 /*.about p {
@@ -562,7 +562,7 @@ footer {
 
 .copyright-page {
   display: none;
-  padding-top: var(--space-4);
+  padding-top: 0;
 }
 body.copyright-mode .copyright-page {
   display: block;
