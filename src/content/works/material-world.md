@@ -2,6 +2,8 @@
 type: print
 title: <i>Hardcore Until the End</i>, WIP Magazine 11
 date: 2025-06
+categories:
+  - magazines
 caption: "Contributed an article on DJ Mehdi's Espionnage era. Based on
   interviews with curator Charlotte Dutoit, DJ Feadz, music entrepreneur Olivier
   Rosset, and graphic designer Alexander Wise. It has been published around the
