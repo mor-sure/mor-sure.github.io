@@ -2,6 +2,8 @@
 type: print
 title: <i>Precious</i>, WIP Magazine 09
 date: 2023-11
+categories:
+  - magazines
 caption: Interviewed director Joaquim Bayle, following the premiere of the skate
   film <i>Precious</i>.
 width_mm: 210
