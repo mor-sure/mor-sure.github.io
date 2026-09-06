@@ -2,6 +2,8 @@
 type: event
 title: <i>Manifeste en Suspens</i>, Book Launch at Pral
 date: 2024-10
+categories:
+  - event
 caption: ""
 width_mm: 420
 height_mm: 594
