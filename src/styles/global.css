@@ -528,6 +528,7 @@ body.bio-mode .about {
 }
 body.bio-mode .work,
 body.bio-mode .toggle-all,
+body.bio-mode .category-filters,
 body.bio-mode .copyright-page {
   display: none;
 }
@@ -568,6 +569,7 @@ body.copyright-mode .copyright-page {
 }
 body.copyright-mode .work,
 body.copyright-mode .toggle-all,
+body.copyright-mode .category-filters,
 body.copyright-mode .about {
   display: none;
 }
