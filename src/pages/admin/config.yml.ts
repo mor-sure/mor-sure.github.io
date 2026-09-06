@@ -58,6 +58,13 @@ collections:
         date_format: 'YYYY-MM'
         time_format: false
         hint: Utilisée pour trier les projets (plus récent en premier) et affichée devant le titre.
+      - name: categories
+        label: Categories
+        widget: select
+        multiple: true
+        required: false
+        options: [magazines, monographs, event, features]
+        hint: Optional — used for the filter row above the works list.
       - name: caption
         label: Caption
         widget: text
