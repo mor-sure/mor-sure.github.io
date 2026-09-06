@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { work, eager = false } = Astro.props;
-const { title, date, caption, event_images: images, width_mm, height_mm } = work.data;
+const { title, date, caption, event_images: images, width_mm, height_mm, categories } = work.data;
 
 const frameHeightPx = PAGE_WIDTH / FRAME_RATIO;
 const coverWidthPx = Math.round(width_mm * MM_SCALE);
@@ -25,7 +25,7 @@ const fullImages = await Promise.all(
 );
 ---
 
-<figure class="work work-event">
+<figure class="work work-event" data-categories={categories?.join(' ') ?? ''}>
   <span class="work-line">
     <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
     <span class="work-title" set:html={` ${title}.`} />

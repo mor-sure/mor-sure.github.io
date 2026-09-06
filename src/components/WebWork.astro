@@ -6,9 +6,9 @@ interface Props {
   work: OnlineWorkEntry;
 }
 const { work } = Astro.props;
-const { title, date, url } = work.data;
+const { title, date, url, categories } = work.data;
 ---
-<figure class="work work-online">
+<figure class="work work-online" data-categories={categories?.join(' ') ?? ''}>
   <a class="work-line" href={url} target="_blank" rel="noopener">
     <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
     <span class="work-title" set:html={` ${title}.`} />
