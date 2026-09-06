@@ -119,14 +119,13 @@ a {
 /* --- works -------------------------------------------------------------- */
 
 .toggle-all {
-  display: block;
-  margin-bottom: var(--space-2);
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 11px;
   color: var(--ink);
   text-decoration: none;
   cursor: pointer;
 }
+
 .toggle-all:hover {
   color: #2a4195;
 }
