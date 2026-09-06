@@ -82,7 +82,7 @@ a {
    bio (see nameHref in Base.astro). A border under the last line divides the
    header from the works below. */
 .site-header {
-  margin-bottom: calc(var(--space-5) * 1.4);
+  margin-bottom: calc(var(--space-5) * 0.6);
   padding-bottom: var(--space-2);
   border-bottom: 1px solid #eaeaea;
 }
@@ -601,7 +601,7 @@ body.copyright-mode .about {
 
 .controls-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   margin-bottom: var(--space-2);
 }
