@@ -2,6 +2,8 @@
 type: print
 title: <i>Dweller Forever</i>, Love Injection 070
 date: 2024-05
+categories:
+  - magazines
 caption: Contributed a review of the New-York based festival Dweller.
 width_mm: 205
 height_mm: 280
