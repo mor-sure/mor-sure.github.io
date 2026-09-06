@@ -119,8 +119,6 @@ a {
 /* --- works -------------------------------------------------------------- */
 
 .toggle-all {
-  display: block;
-  margin-bottom: var(--space-2);
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 11px;
   color: var(--ink);
@@ -604,7 +602,7 @@ body.copyright-mode .about {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: var(--space-2);
+  margin-bottom: calc(var(--space-2) * 1.5);
 }
 .category-filters {
   display: flex;
