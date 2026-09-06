@@ -2,6 +2,8 @@
 type: print
 title: <i>Machine Learning</i>, WIP Magazine 08
 date: 2023-05
+categories:
+  - magazines
 caption: "Contributed an article on the history of techno from a Black
   perspective. Based on an interview with writer, composer, and theorist
   DeForrest Brown Jr., aka Speaker Music. Also featured: an intro to publishing
