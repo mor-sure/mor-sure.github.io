@@ -19,7 +19,7 @@
 
 :root {
   --ink: #1a1a1a;
-  --bg: #fdfdfb;
+  --bg: #fff;
 
   /* Zero on desktop, so the page measure is untouched there. On a phone it
      becomes the margin between the content and the screen edges. */
