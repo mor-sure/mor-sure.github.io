@@ -604,7 +604,7 @@ body.copyright-mode .about {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-top: var(--space-3);
+  margin-top: calc(var(--space-3) * 1.5);
   margin-bottom: calc(var(--space-2) * 1.5);
 }
 .category-filters {
