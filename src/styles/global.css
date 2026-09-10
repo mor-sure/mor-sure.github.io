@@ -110,7 +110,7 @@ a {
 }
 .site-name {
   font-size: 15px;
-  margin-bottom: calc(var(--space-2) * 1.5);
+  margin-bottom: calc(var(--space-2) * 0,6);
 }
 .site-line { 
    margin-top:0; 
