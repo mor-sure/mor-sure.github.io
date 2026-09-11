@@ -562,7 +562,7 @@ footer {
 
 .copyright-page {
   display: none;
-  padding-top: 0;
+  padding-top: var(--space-4);
 }
 body.copyright-mode .copyright-page {
   display: block;
