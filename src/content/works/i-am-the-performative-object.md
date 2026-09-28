@@ -1,6 +1,6 @@
 ---
 type: print
-title: <i>I am the Performative Object<i/>, Martin Sigler
+title: <i>I am the Performative Object</i>, Martin Sigler
 date: 2022-06
 categories:
   - monographs
