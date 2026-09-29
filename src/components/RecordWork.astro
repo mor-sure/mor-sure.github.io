@@ -140,11 +140,7 @@ const fullImages = await Promise.all(
     work.querySelector('[data-expand]')?.addEventListener('click', (e) => {
       e.stopPropagation();
       let i = current();
-<<<<<<< HEAD
-        (window as any).openLightbox(
-=======
       (window as any).openLightbox(
->>>>>>> 0d55e45e019163bfc4ac6ed583c8c2f8782f75ef
         () => slides[i],
         (direction: 1 | -1) => {
           i = (i + direction + total) % total;
