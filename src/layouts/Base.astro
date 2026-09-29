@@ -49,6 +49,11 @@ class="site-line" target="_blank" rel="noopener">{site.instagram}</a>
 class="site-line" target="_blank" rel="noopener">bandcamp</a> 
 </header>
 
+<div id="lightbox" class="lightbox">
+  <button class="lightbox-close" aria-label="Close">×</button>
+  <img class="lightbox-img" alt="" />
+</div>
+
     <main class="column">
       <slot />
     </main>
@@ -76,6 +81,50 @@ document.addEventListener('click', (e) => {
     document.body.classList.remove('copyright-mode');
   }
 });
+</script>
+<script>
+  let activeStep: ((direction: 1 | -1) => void) | null = null;
+
+  function closeLightbox() {
+    document.getElementById('lightbox')?.classList.remove('active');
+    activeStep = null;
+  }
+
+  function openLightbox(getActiveSlide: () => HTMLElement | undefined, step: (direction: 1 | -1) => void) {
+    const box = document.getElementById('lightbox')!;
+    const img = box.querySelector<HTMLImageElement>('.lightbox-img')!;
+
+    const render = () => {
+      const slide = getActiveSlide();
+      const full = slide?.dataset.full;
+      const inline = slide?.querySelector('img');
+      if (!full && !inline) return;
+      img.src = full || inline!.currentSrc || inline!.src;
+      img.alt = inline?.alt ?? '';
+    };
+
+    activeStep = (direction) => {
+      step(direction);
+      render();
+    };
+    render();
+    box.classList.add('active');
+  }
+
+  document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('.lightbox-close')) {
+      closeLightbox();
+      return;
+    }
+    activeStep?.(1);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') activeStep?.(1);
+    if (e.key === 'ArrowLeft') activeStep?.(-1);
+  });
+
+  (window as any).openLightbox = openLightbox;
 </script>
 <footer style="text-align: center; padding: var(--space-4) 0;">
   <a href="#" id="copyright-toggle" class="footer-copyright">© 2026</a>

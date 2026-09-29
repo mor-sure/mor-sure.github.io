@@ -71,60 +71,6 @@ const fullImages = await Promise.all(
 </figure>
 
 <script>
-  let activeStep: ((direction: 1 | -1) => void) | null = null;
-
-  function getLightbox() {
-    let box = document.getElementById('lightbox');
-    if (box) return box;
-
-    box = document.createElement('div');
-    box.id = 'lightbox';
-    box.className = 'lightbox';
-    box.innerHTML = `<button class="lightbox-close" aria-label="Close">×</button><img class="lightbox-img" alt="">`;
-    document.body.append(box);
-
-    box.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('.lightbox-close')) {
-        closeLightbox();
-        return;
-      }
-      activeStep?.(1);
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowRight') activeStep?.(1);
-      if (e.key === 'ArrowLeft') activeStep?.(-1);
-    });
-
-    return box;
-  }
-
-  function closeLightbox() {
-    document.getElementById('lightbox')?.classList.remove('active');
-    activeStep = null;
-  }
-
-  function openLightbox(getActiveSlide: () => HTMLElement | undefined, step: (direction: 1 | -1) => void) {
-    const box = getLightbox();
-    const img = box.querySelector<HTMLImageElement>('.lightbox-img')!;
-
-    const render = () => {
-      const slide = getActiveSlide();
-      const full = slide?.dataset.full;
-      const inline = slide?.querySelector('img');
-      if (!full && !inline) return;
-      img.src = full || inline!.currentSrc || inline!.src;
-      img.alt = inline?.alt ?? '';
-    };
-
-    activeStep = (direction) => {
-      step(direction);
-      render();
-    };
-    render();
-    box.classList.add('active');
-  }
-
   document.querySelectorAll<HTMLElement>('.work-record').forEach((work) => {
     const slidesEl = work.querySelector<HTMLElement>('[data-slides]');
     const frame = work.querySelector<HTMLElement>('[data-frame]');
@@ -194,7 +140,7 @@ const fullImages = await Promise.all(
     work.querySelector('[data-expand]')?.addEventListener('click', (e) => {
       e.stopPropagation();
       let i = current();
-      openLightbox(
+      (window as any).openLightbox(
         () => slides[i],
         (direction) => {
           i = (i + direction + total) % total;
