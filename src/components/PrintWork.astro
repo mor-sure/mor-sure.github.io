@@ -205,9 +205,13 @@ work.querySelector('.work-line')?.addEventListener('click', (e) => {
       // hasn't caught up yet on the very next call — stepping through the
       // lightbox quickly would render a stale slide until the scroll settled.
       let i = current();
+<<<<<<< HEAD
+        (window as any).openLightbox(
+=======
       (window as any).openLightbox(
+>>>>>>> 0d55e45e019163bfc4ac6ed583c8c2f8782f75ef
         () => slides[i],
-        (direction) => {
+        (direction: 1 | -1) => {
           i = (i + direction + total) % total;
           goToIndex(i);
         }
