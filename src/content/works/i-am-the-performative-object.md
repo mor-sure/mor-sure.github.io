@@ -13,7 +13,7 @@ caption: <i>I Am the Performative Object</i> is a process, a 'mise en abyme' of
 width_mm: 110
 height_mm: 170
 images:
-  - src: ../../assets/works/iapo_cover.png
+  - src: ../../assets/works/iapo-cover.png
   - src: ../../assets/works/iapo-spread-1.png
   - src: ../../assets/works/iapo-spread-2.png
   - src: ../../assets/works/iapo-spread-3.png
