@@ -1,11 +1,11 @@
 ---
 type: print
-title: <i>Mixed Media<i/>, WIP Magazine 10
+title: <i>Mixed Media</i>, WIP Magazine 10
 date: 2024-10
 categories:
   - magazines
-caption: "Interviewed Hanabi, a visual artists duo comprising Ben Dorado and
-  Pablo Jomaron. "
+caption: "Interviewed Hanabi, the visual art duo formed by Ben Dorado and Pablo
+  Jomaron. "
 width_mm: 210
 height_mm: 280
 images:
