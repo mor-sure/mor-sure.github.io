@@ -9,7 +9,7 @@ caption: "Interviewed Hanabi, the visual art duo formed by Ben Dorado and Pablo
 width_mm: 210
 height_mm: 280
 images:
-  - src: ../../assets/works/wip-10-cover.png
+  - src: ../../assets/works/wip-10-cover-2.png
   - src: ../../assets/works/wip-10_spread-1.png
   - src: ../../assets/works/wip-10_spread-2.png
   - src: ../../assets/works/wip-10_spread-3.png
