@@ -82,8 +82,8 @@ a {
    bio (see nameHref in Base.astro). A border under the last line divides the
    header from the works below. */
 .site-header {
-  margin-bottom: calc(var(--space-5) * 0.6);
-  padding-bottom: var(--space-2);
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 .site-name { 
    display:block; 
@@ -145,8 +145,7 @@ a {
   color: #2a4195;
 }
 .work-date {
-  display: inline-block;
-  width: 45px;
+  display: inline;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 300;
