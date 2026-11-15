@@ -630,7 +630,3 @@ body.copyright-mode .about {
   opacity: 0.25;
   transition: opacity 0.15s ease;
 }
-.about p,
-.copyright-page p {
-  text-wrap: pretty;
-}
