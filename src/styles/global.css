@@ -635,7 +635,7 @@ body.copyright-mode .about {
    téléphone, les images restent en couleur. */
 @media (hover: hover) {
   .frame .art {
-    filter: grayscale(1) contrast(1.6) brightness(1.1);
+    filter: grayscale(1) contrast(1.8) brightness(0.95);
     transition: filter 0.3s ease;
   }
   .frame:hover .art,
