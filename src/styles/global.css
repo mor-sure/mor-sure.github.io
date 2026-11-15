@@ -630,3 +630,16 @@ body.copyright-mode .about {
   opacity: 0.25;
   transition: opacity 0.15s ease;
 }
+/* Images des projets dépliés : vrai noir & blanc contrasté (rendu scan), en
+   couleur au survol. Réservé aux appareils avec un vrai survol (souris) ; sur
+   téléphone, les images restent en couleur. */
+@media (hover: hover) {
+  .frame .art {
+    filter: grayscale(1) contrast(1.35) brightness(1.05);
+    transition: filter 0.3s ease;
+  }
+  .frame:hover .art,
+  .frame:focus-within .art {
+    filter: grayscale(0) contrast(1) brightness(1);
+  }
+}
