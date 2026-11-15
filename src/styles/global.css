@@ -643,3 +643,14 @@ body.copyright-mode .about {
     filter: grayscale(0) contrast(1) brightness(1);
   }
 }
+/* Paragraphes : césure automatique + lignes équilibrées, ordinateur et téléphone */
+.about p,
+.copyright-page p,
+.work-caption p {
+  text-align: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 7 3 3; /* mot d'au moins 7 lettres, 3 avant et 3 après la coupure */
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
