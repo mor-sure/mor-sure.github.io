@@ -37,12 +37,6 @@ const photo = entry ? (await entry()).default : undefined;
 
 <Base image={preview}>
 <div class="controls-row">
-  <nav class="category-filters">
-    <button type="button" class="filter-btn" data-category="event">Event</button>
-    <button type="button" class="filter-btn" data-category="features">Features</button>
-    <button type="button" class="filter-btn" data-category="magazines">Magazines</button>
-    <button type="button" class="filter-btn" data-category="monographs">Monographs</button>
-  </nav>
   <a href="#" id="toggle-all" class="toggle-all">Expand All</a>
 </div>
 {works.map((work, i) => <Work work={work} eager={i === 0} />)}
@@ -75,24 +69,6 @@ const photo = entry ? (await entry()).default : undefined;
     const anyCollapsed = [...works].some((w) => !w.classList.contains('expanded'));
     works.forEach((w) => w.classList.toggle('expanded', anyCollapsed));
     toggleAllBtn.textContent = anyCollapsed ? 'Collapse All' : 'Expand All';
-  });
-
-  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-  let activeCategory: string | null = null;
-
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const category = btn.dataset.category!;
-      activeCategory = activeCategory === category ? null : category;
-
-      filterBtns.forEach((b) => b.classList.toggle('active', b.dataset.category === activeCategory));
-
-      document.querySelectorAll<HTMLElement>('.work').forEach((work) => {
-        const cats = work.dataset.categories?.split(' ') ?? [];
-        const dimmed = activeCategory !== null && !cats.includes(activeCategory);
-        work.classList.toggle('dimmed', dimmed);
-      });
-    });
   });
 </script>
 </Base>
