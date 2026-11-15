@@ -29,7 +29,7 @@ const preview =
 const paragraphs = site.about.split('\n\n').map(noOrphans);
 
 const copyright = noOrphans(
-  '© 2026 Martin Sigler. All rights reserved. All content on this site (including text, photography, layout, and design) is the property of Martin Sigler unless otherwise credited. Where a contributor is named (photography, artwork, etc.), rights remain with that contributor. No part of this site may be reproduced, distributed, or used in any form without prior written permission from the relevant rights holder.'
+  '© 2026 Martin Sigler. All rights reserved. All content on this site (including text, photography, layout, and design) is the property of Martin Sigler unless otherwise credited. Where a contributor is named (photography, artwork, etc.), rights remain with that contributor. No\u00a0part\u00a0of\u00a0this\u00a0site may be reproduced, distributed, or used in any form without prior written permission from the relevant rights holder.'
 );
 
 // site.json is plain data, so the photo path can't use the image() schema
