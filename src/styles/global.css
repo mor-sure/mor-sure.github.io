@@ -646,7 +646,9 @@ body.copyright-mode .about {
 /* Paragraphes : césure automatique + lignes équilibrées, ordinateur et téléphone */
 .about p,
 .copyright-page p,
-.work-caption p {
+.work-line,
+.event-credit,
+figcaption {
   text-align: left;
   hyphens: auto;
   -webkit-hyphens: auto;
