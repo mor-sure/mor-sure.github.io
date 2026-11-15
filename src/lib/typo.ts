@@ -1,6 +1,6 @@
 // Phrases qui ne doivent jamais être coupées en fin de ligne.
 // Ajoute ici d'autres titres si besoin.
-const PROTECTED = ['I Am the Performative Object'];
+const PROTECTED: string[] = [];
 
 const SHORT_WORDS = /\b(a|an|the|of|in|on|to|at|by|or|as|is|if|and|for|but|nor|no|so|I)[ \u00a0]+/gi;
 const SHORT_ITALIC = /<(i|em)>([^<]{1,40})<\/\1>/gi;
