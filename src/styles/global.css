@@ -84,7 +84,6 @@ a {
 .site-header {
   margin-bottom: calc(var(--space-5) * 0.6);
   padding-bottom: var(--space-2);
-  border-bottom: 1px solid #eaeaea;
 }
 .site-name { 
    display:block; 
@@ -131,7 +130,7 @@ a {
 }
 
 .work {
-  margin: 0 0 7px;
+  margin: 0 0 4px;
 }
 
 .work-line{ 
@@ -148,7 +147,7 @@ a {
 .work-date {
   display: inline-block;
   width: 45px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 300;
 }
