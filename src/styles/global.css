@@ -131,7 +131,7 @@ a {
 }
 
 .work {
-  margin: 0 0 4px;
+  margin: 0 0 5px;
 }
 
 .work-line{ 
@@ -147,6 +147,7 @@ a {
 }
 .work-date {
   display: inline;
+  margin-right: 4px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
   font-weight: 400;
@@ -544,7 +545,7 @@ body.bio-mode .copyright-page {
 /* --- footer --------------------------------------------------------------- */
 
 .footer-copyright {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
   color: var(--ink);
   text-decoration: none;
