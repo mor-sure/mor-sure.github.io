@@ -2,6 +2,7 @@
 import { Picture, getImage } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { PAGE_WIDTH, FRAME_RATIO, MM_SCALE } from '../lib/scale';
+import { noOrphans } from '../lib/typo';
 
 type Work = CollectionEntry<'works'>;
 export type RecordWorkEntry = Omit<Work, 'data'> & { data: Extract<Work['data'], { type: 'record' }> };
@@ -28,8 +29,8 @@ const fullImages = await Promise.all(
 <figure class="work work-record" data-categories={categories?.join(' ') ?? ''}>
   <span class="work-line">
     <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
-    <span class="work-title" set:html={` ${title}.`} />
-    <span class="caption-full" set:html={` ${caption}`} />
+    <span class="work-title" set:html={noOrphans( ${title}.)} />
+    <span class="caption-full" set:html={noOrphans( ${caption})} />
   </span>
 
   <div
