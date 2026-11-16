@@ -660,11 +660,13 @@ figcaption {
 .count {
   position: absolute;
   left: var(--space-2);
-  bottom: calc(var(--space-2) + (var(--space-4) - 12px) / 2);
+  bottom: calc(var(--space-2) + (var(--space-4) - 10px) / 2);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 1;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
   color: #fff;
-  mix-blend-mode: difference; /* blanc sur image sombre, noir sur image claire */
+  mix-blend-mode: difference;
   pointer-events: none;
 }
