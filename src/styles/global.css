@@ -670,3 +670,8 @@ figcaption {
   mix-blend-mode: difference;
   pointer-events: none;
 }
+@media (max-width: 640px) {
+  .work-line {
+    text-wrap: wrap;
+  }
+}
