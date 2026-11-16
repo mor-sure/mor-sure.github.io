@@ -123,13 +123,14 @@ const fullImages = await Promise.all(
         dot.addEventListener('click', () => goToIndex(i));
         dotsWrap.append(dot);
       });
-           const dots = [...dotsWrap.children];
+      const dots = [...dotsWrap.children];
       const count = work.querySelector<HTMLElement>('[data-count]');
       if (count) count.textContent = `1/${total}`;
       slidesEl.addEventListener('scroll', () => {
         const i = current();
         dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
         if (count) count.textContent = `${i + 1}/${total}`;
+      });
     }
 
     work.querySelector('[data-prev]')?.addEventListener('click', () => step(-1));
