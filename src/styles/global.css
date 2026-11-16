@@ -403,7 +403,7 @@ a {
    display:none; 
 } 
 .work.expanded .dots{ 
-   display:flex; 
+   display:none;
 } 
 
 figcaption {
@@ -655,4 +655,16 @@ figcaption {
   hyphenate-limit-chars: 7 3 3; /* mot d'au moins 7 lettres, 3 avant et 3 après la coupure */
   text-wrap: pretty;
   overflow-wrap: break-word;
+}
+/* Compteur de pages dans l'image, en face de l'icône d'agrandissement */
+.count {
+  position: absolute;
+  left: var(--space-2);
+  bottom: calc(var(--space-2) + (var(--space-4) - 12px) / 2);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  color: #fff;
+  mix-blend-mode: difference; /* blanc sur image sombre, noir sur image claire */
+  pointer-events: none;
 }
