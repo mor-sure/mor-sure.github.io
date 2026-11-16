@@ -644,17 +644,29 @@ body.copyright-mode .about {
   }
 }
 /* Paragraphes : césure automatique + lignes équilibrées, ordinateur et téléphone */
+/* Paragraphes : pas de césure par défaut, lignes équilibrées */
 .about p,
 .copyright-page p,
 .work-line,
 .event-credit,
 figcaption {
   text-align: left;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphenate-limit-chars: 7 3 3; /* mot d'au moins 7 lettres, 3 avant et 3 après la coupure */
+  hyphens: manual;
+  -webkit-hyphens: manual;
   text-wrap: pretty;
   overflow-wrap: break-word;
+}
+
+/* Césure prudente, seulement là où le navigateur sait la limiter */
+@supports (hyphenate-limit-chars: auto) {
+  .about p,
+  .copyright-page p,
+  .work-line,
+  .event-credit,
+  figcaption {
+    hyphens: auto;
+    hyphenate-limit-chars: 10 4 4;
+  }
 }
 /* Compteur de pages dans l'image, en face de l'icône d'agrandissement */
 .count {
