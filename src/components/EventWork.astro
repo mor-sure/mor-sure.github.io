@@ -92,6 +92,7 @@ const fullImages = await Promise.all(
       )
     }
     <button class="expand" data-expand aria-label={`${title}: expand image`}>⤢</button>
+    {images.length > 1 && <span class="count" data-count aria-hidden="true" />}
   </div>
 
   {images.length > 1 && <div class="dots" data-dots />}
@@ -155,11 +156,13 @@ const fullImages = await Promise.all(
         dot.addEventListener('click', () => goToIndex(i));
         dotsWrap.append(dot);
       });
-      const dots = [...dotsWrap.children];
+           const dots = [...dotsWrap.children];
+      const count = work.querySelector<HTMLElement>('[data-count]');
+      if (count) count.textContent = `1/${total}`;
       slidesEl.addEventListener('scroll', () => {
         const i = current();
         dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
-        syncFrameRatio();
+        if (count) count.textContent = `${i + 1}/${total}`;
       });
     } else {
       slidesEl.addEventListener('scroll', syncFrameRatio);
