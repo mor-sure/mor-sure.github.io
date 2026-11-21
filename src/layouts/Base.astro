@@ -81,6 +81,17 @@ document.addEventListener('click', (e) => {
     document.body.classList.remove('copyright-mode');
   }
 });
+  // Balayage du doigt : le défilement horizontal des images passe aussi le projet en couleur.
+  // Le défilement ne remonte pas dans le DOM, donc on l'écoute en phase de capture.
+  document.addEventListener(
+    'scroll',
+    (e) => {
+      const slides = e.target instanceof HTMLElement ? e.target.closest('.slides') : null;
+      const work = slides?.closest<HTMLElement>('.work');
+      if (work && work.querySelector('.nav')) work.dataset.color = '';
+    },
+    { capture: true, passive: true }
+  );
 </script>
 <script>
   let activeStep: ((direction: 1 | -1) => void) | null = null;
