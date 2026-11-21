@@ -687,3 +687,9 @@ figcaption {
     text-wrap: wrap;
   }
 }
+/* Téléphone : noir et blanc, en couleur dès qu'on utilise les flèches ou qu'on touche l'image */
+@media (hover: none) {
+  .work:not([data-color]) .frame .art {
+    filter: grayscale(1) contrast(1.8) brightness(0.95);
+  }
+}
