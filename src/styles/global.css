@@ -673,6 +673,9 @@ figcaption {
   .work-line {
     text-wrap: wrap;
   }
+}
+
+/* Images : noir et blanc intense par défaut, couleur à l'interaction */
 /* Images : noir et blanc intense par défaut, couleur à l'interaction */
 :root {
   --bw: grayscale(1) brightness(0.95) contrast(1.8);
