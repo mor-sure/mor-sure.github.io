@@ -174,7 +174,7 @@ a {
   width: 100%;
   aspect-ratio: var(--frame-ratio);
   position: relative;
-  background: #fff;
+  background: var(--bg);
   overflow: hidden;
   cursor: pointer;
   margin-top: var(--space-2);
@@ -437,7 +437,7 @@ figcaption {
   width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #fafafa;
+  background: var(--bg);
 }
 
 .web-art .art {
@@ -456,7 +456,7 @@ figcaption {
   align-items: center;
   justify-content: center;
   padding: var(--space-4);
-  background: rgba(17, 17, 17, 0.94);
+  background: var(--bg);
   cursor: pointer;
   z-index: 1000;
 }
@@ -478,7 +478,7 @@ figcaption {
   right: var(--space-3);
   border: none;
   background: none;
-  color: #fff;
+  color: var(--ink);
   font-size: var(--xl);
   line-height: 1;
   cursor: pointer;
@@ -594,8 +594,8 @@ body.copyright-mode .about {
   margin: 0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 12px;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.45);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
   padding: 0 6px;
 }
 
@@ -629,19 +629,6 @@ body.copyright-mode .about {
 .work.dimmed {
   opacity: 0.25;
   transition: opacity 0.15s ease;
-}
-/* Images des projets dépliés : vrai noir & blanc contrasté (rendu scan), en
-   couleur au survol. Réservé aux appareils avec un vrai survol (souris) ; sur
-   téléphone, les images restent en couleur. */
-@media (hover: hover) {
-  .frame .art {
-    filter: grayscale(1) contrast(1.8) brightness(0.95);
-    transition: filter 0.3s ease;
-  }
-  .frame:hover .art,
-  .frame:focus-within .art {
-    filter: grayscale(0) contrast(1) brightness(1);
-  }
 }
 /* Paragraphes : césure automatique + lignes équilibrées, ordinateur et téléphone */
 /* Paragraphes : pas de césure par défaut, lignes équilibrées */
@@ -686,10 +673,29 @@ figcaption {
   .work-line {
     text-wrap: wrap;
   }
+/* Images : noir et blanc intense par défaut, couleur à l'interaction */
+:root {
+  --bw: grayscale(1) brightness(0.95) contrast(1.8);
 }
-/* Téléphone : noir et blanc, en couleur dès qu'on utilise les flèches ou qu'on touche l'image */
+
+.frame .art {
+  transition: filter 0.3s ease;
+}
+
+/* Ordinateur : couleur au survol de la souris ou au focus clavier */
+@media (hover: hover) {
+  .frame .art {
+    filter: var(--bw);
+  }
+  .frame:hover .art,
+  .frame:has(:focus-visible) .art {
+    filter: none;
+  }
+}
+
+/* Téléphone : couleur dès qu'on touche une flèche, l'image ou qu'on balaie */
 @media (hover: none) {
   .work:not([data-color]) .frame .art {
-    filter: grayscale(1) contrast(1.8) brightness(0.95);
+    filter: var(--bw);
   }
 }
