@@ -125,6 +125,29 @@ document.addEventListener('click', (e) => {
   });
 
   (window as any).openLightbox = openLightbox;
+
+  // Téléphone : un projet passe en couleur dès qu'on touche une flèche ou l'image
+  // (projets à plusieurs images seulement). Il repart en noir et blanc quand on
+  // plie ou déplie une ligne, ou avec Expand All / Collapse All.
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest('#toggle-all')) {
+      document.querySelectorAll<HTMLElement>('[data-color]').forEach((w) => delete w.dataset.color);
+      return;
+    }
+
+    const work = target.closest<HTMLElement>('.work');
+    if (!work) return;
+
+    if (target.closest('.work-line')) {
+      delete work.dataset.color;
+      return;
+    }
+
+    const onFrame = target.closest('.frame') && !target.closest('.expand');
+    if (onFrame && work.querySelector('.nav')) work.dataset.color = '';
+  });
 </script>
 <footer style="text-align: center; padding: var(--space-4) 0;">
   <a href="#" id="copyright-toggle" class="footer-copyright">© 2026</a>
