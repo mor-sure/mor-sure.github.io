@@ -42,7 +42,7 @@ const photo = entry ? (await entry()).default : undefined;
 
 <Base image={preview}>
 <div class="controls-row">
-  <a href="#" id="toggle-all" class="toggle-all">Expand All</a>
+  <a href="#" id="toggle-all" class="toggle-all">Collapse All</a>
 </div>
 {works.map((work, i) => <Work work={work} eager={i === 0} />)}
 
