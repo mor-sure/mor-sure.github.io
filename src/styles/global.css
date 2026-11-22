@@ -711,16 +711,6 @@ figcaption {
   color: #fff;
 }
 
-.slide:not([data-cover])::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 90px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  pointer-events: none;
-}
 
 /* Bouton d'agrandissement : la flèche seule, sans carré */
 .expand {
