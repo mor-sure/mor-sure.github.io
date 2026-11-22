@@ -57,7 +57,7 @@ const fullImages = await Promise.all(
 </span>
 
   <div
-    class="frame"
+    class="frame on-cover"
     data-frame
     style={`--cover-w: ${coverWidthPct}%; --cover-h: ${coverHeightPct}%`}
   >
@@ -187,6 +187,7 @@ work.querySelector('.work-line')?.addEventListener('click', (e) => {
       const dots = [...dotsWrap.children];
       const count = work.querySelector<HTMLElement>('[data-count]');
       if (count) count.textContent = `1/${total}`;
+      frame?.classList.toggle('on-cover', i === 0);
       slidesEl.addEventListener('scroll', () => {
         const i = current();
         dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
