@@ -26,7 +26,7 @@ const fullImages = await Promise.all(
 );
 ---
 
-<figure class="work work-event" data-categories={categories?.join(' ') ?? ''}>
+<figure class="work work-event expanded" data-categories={categories?.join(' ') ?? ''}>
   <span class="work-line">
     <span class="work-date" set:html={date.slice(2).replace('-', '.')} />
   <span class="work-title" set:html={noOrphans(` ${title}.`)} />
