@@ -703,12 +703,12 @@ figcaption {
   .work:not([data-color]) .frame .art {
     filter: var(--bw);
   }
-}
-/* Texte sur l'image : noir sur la couverture (fond blanc), blanc sur image pleine avec voile sombre */
-.frame:not(.on-cover) .count,
-.frame:not(.on-cover) .expand,
-.slide:not([data-cover]) .event-credit {
+/* Texte sur l'image : blanc avec inversion automatique (noir sur blanc, blanc sur image sombre) */
+.count,
+.expand,
+.event-credit {
   color: #fff;
+  mix-blend-mode: difference;
 }
 
 
