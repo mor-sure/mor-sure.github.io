@@ -697,12 +697,13 @@ figcaption {
     filter: none;
   }
 }
-
 /* Téléphone : couleur dès qu'on touche une flèche, l'image ou qu'on balaie */
 @media (hover: none) {
   .work:not([data-color]) .frame .art {
     filter: var(--bw);
   }
+}
+
 /* Texte sur l'image : blanc avec inversion automatique (noir sur blanc, blanc sur image sombre) */
 .count,
 .expand,
@@ -711,9 +712,20 @@ figcaption {
   mix-blend-mode: difference;
 }
 
-
 /* Bouton d'agrandissement : la flèche seule, sans carré */
 .expand {
   border: 0;
   background: none;
+}
+
+/* Ligne d'information (compteur, crédit, flèche) remontée d'une ligne */
+:root {
+  --info-lift: 12px;
+}
+.count {
+  bottom: calc(var(--space-2) + var(--info-lift) + (var(--space-4) - 10px) / 2);
+}
+.event-credit,
+.expand {
+  bottom: calc(var(--space-2) + var(--info-lift));
 }
