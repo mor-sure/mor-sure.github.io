@@ -723,7 +723,10 @@ figcaption {
   --info-lift: 12px;
 }
 .count {
-  bottom: calc(var(--space-2) + var(--info-lift) + (var(--space-4) - 10px) / 2);
+  bottom: calc(var(--space-2) + var(--info-lift));
+  height: var(--space-4);
+  display: flex;
+  align-items: center;
 }
 .event-credit,
 .expand {
