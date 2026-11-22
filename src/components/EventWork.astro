@@ -160,11 +160,11 @@ const fullImages = await Promise.all(
            const dots = [...dotsWrap.children];
       const count = work.querySelector<HTMLElement>('[data-count]');
       if (count) count.textContent = `1/${total}`;
-      frame?.classList.toggle('on-cover', i === 0);
       slidesEl.addEventListener('scroll', () => {
         const i = current();
         dots.forEach((dot, di) => dot.classList.toggle('active', di === i));
         if (count) count.textContent = `${i + 1}/${total}`;
+        frame?.classList.toggle('on-cover', i === 0);
       });
     } else {
       slidesEl.addEventListener('scroll', syncFrameRatio);
