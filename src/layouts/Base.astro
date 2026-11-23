@@ -27,6 +27,16 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: site.name,
+        url: new URL('/', Astro.site).href,
+      })}
+    />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
