@@ -50,7 +50,7 @@ const previewUrl = preview ? new URL(preview.src, Astro.site).href : undefined;
   <body style={`--column: ${PAGE_WIDTH}px; --frame-ratio: ${FRAME_RATIO}`}>
 
 <header class="site-header column"> 
-<span class="site-name" id="bio-toggle">{site.name}</span> 
+<h1 class="site-name" id="bio-toggle">{site.name}</h1>
 <a href={`mailto:${site.email}`} 
 class="site-line">{site.email}</a> 
 <a href={site.instagram_url} 
