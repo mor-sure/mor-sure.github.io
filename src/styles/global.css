@@ -732,3 +732,8 @@ figcaption {
 .expand {
   bottom: calc(var(--space-2) + var(--info-lift));
 }
+/* Le nom du site est maintenant un h1 : on retire le gras et la marge du navigateur */
+h1.site-name {
+  margin-top: 0;
+  font-weight: 400;
+}
