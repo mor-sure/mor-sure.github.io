@@ -17,6 +17,7 @@ width_mm: 140
 height_mm: 117
 images:
   - src: ../../assets/works/v2-cd-scan-1.png
+  - src: ../../assets/works/tmta-tm-1.jpg
 order: 0
 draft: false
 ---
