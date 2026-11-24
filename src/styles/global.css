@@ -680,7 +680,7 @@ figcaption {
 /* Images : noir et blanc intense par défaut, couleur à l'interaction */
 /* Images : noir et blanc intense par défaut, couleur à l'interaction */
 :root {
-  --bw: grayscale(1) brightness(0.95) contrast(1.8);
+  --bw: grayscale(1) brightness(1) contrast(3);
 }
 
 .frame .art {
@@ -736,4 +736,9 @@ figcaption {
 h1.site-name {
   margin-top: 0;
   font-weight: 400;
+}
+
+/* Les images à fond transparent (disque) sont aplaties sur blanc avant le filtre */
+.frame .art {
+  background: var(--bg);
 }
