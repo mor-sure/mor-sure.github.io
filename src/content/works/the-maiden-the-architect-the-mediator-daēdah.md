@@ -4,8 +4,10 @@ title: <i>The Maiden, The Architect & The Mediator</i>, daēdah
 date: 2026-02
 categories:
   - features
-caption: "Featured the song Rain Scream with excerpts from my book I am the
-  Performative Object. Listen and Order here. "
+caption: Featured the song Rain Scream with excerpts from my book I am the
+  Performative Object. Listen and purchase <a
+  href="https://damselelysium1.bandcamp.com/album/da-dah-the-maiden-the-architect-the-mediator"
+  target="_blank" rel="noopener">here</a>.
 width_mm: 140
 height_mm: 140
 images:
