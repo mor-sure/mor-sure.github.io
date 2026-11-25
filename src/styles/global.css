@@ -369,7 +369,7 @@ a {
   }
   .work:not(.expanded) .work-title {
     display: block;
-    flex: 1;
+    flex: 0 1 auto;
     min-width: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -741,4 +741,29 @@ h1.site-name {
 /* Les images à fond transparent (disque) sont aplaties sur blanc avant le filtre */
 .frame .art {
   background: var(--bg);
+}
+
+/* Clic : seulement sur les mots, pas sur toute la largeur de la ligne */
+.work-line {
+  pointer-events: none;
+}
+.work-line > * {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Le nom du site est un lien qui garde l'apparence du titre */
+.site-name a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Compteur et agrandissement en haut de l'image, crédit en bas aligné sur la page */
+.count,
+.expand {
+  top: var(--space-2);
+  bottom: auto;
+}
+.event-credit {
+  left: 0;
 }
